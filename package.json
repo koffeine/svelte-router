@@ -1,0 +1,50 @@
+{
+  "name": "@koffeine/svelte-router",
+  "version": "0.0.1",
+  "description": "Router for Svelte",
+  "keywords": [
+    "svelte",
+    "router"
+  ],
+  "homepage": "https://github.com/koffeine/svelte-router",
+  "bugs": {
+    "url": "https://github.com/koffeine/svelte-router/issues"
+  },
+  "license": "MIT",
+  "author": "Kornél Horváth <kornel.horvath@me.com>",
+  "files": [
+    "index.js",
+    "types.d.ts"
+  ],
+  "exports": "./index.js",
+  "type": "module",
+  "types": "types.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/koffeine/svelte-router.git"
+  },
+  "scripts": {
+    "test": "eslint src types.d.ts && tsc -p jsconfig.json",
+    "build": "rollup -c",
+    "prepublishOnly": "npm test && npm run build",
+    "postpublish": "rm index.js"
+  },
+  "dependencies": {
+    "regexparam": "^2"
+  },
+  "devDependencies": {
+    "@koffeine/eslint-config": "24.0.0",
+    "@rollup/plugin-node-resolve": "^13",
+    "@typescript-eslint/eslint-plugin": "^5",
+    "@typescript-eslint/parser": "^5",
+    "esbuild": "^0",
+    "eslint": "8.1.0",
+    "rollup": "^2",
+    "rollup-plugin-esbuild": "^4",
+    "svelte": "^3",
+    "typescript": "^4"
+  },
+  "peerDependencies": {
+    "svelte": "^3"
+  }
+}
