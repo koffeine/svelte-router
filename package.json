@@ -1,6 +1,6 @@
 {
   "name": "@koffeine/svelte-router",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Router for Svelte",
   "keywords": [
     "svelte",
