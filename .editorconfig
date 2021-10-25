@@ -1,6 +1,5 @@
 root = true
 
-# Default
 [*]
 indent_style = tab
 tab_width = 4
@@ -9,16 +8,13 @@ charset = utf-8
 trim_trailing_whitespace = true
 insert_final_newline = true
 
-# Markdown
 [*.md]
 trim_trailing_whitespace = false
 
-# Yaml
 [*.yaml]
 indent_style = space
 indent_size = 4
 
-# package.json
 [package.json]
 indent_style = space
 indent_size = 2
