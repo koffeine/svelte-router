@@ -1,6 +1,6 @@
 import { Route } from './route.js';
 
-class Routes {
+export class Routes {
 
 	#routes;
 
@@ -21,5 +21,3 @@ class Routes {
 	}
 
 }
-
-export { Routes };

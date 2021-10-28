@@ -52,7 +52,5 @@ class Router {
 
 }
 
-const init = Router.init;
-const navigate = Router.navigate;
-
-export { init, navigate };
+export const init = Router.init;
+export const navigate = Router.navigate;

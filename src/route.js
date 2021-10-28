@@ -1,6 +1,6 @@
 import { parse } from 'regexparam';
 
-class Route {
+export class Route {
 
 	#pattern;
 
@@ -56,5 +56,3 @@ class Route {
 	}
 
 }
-
-export { Route };

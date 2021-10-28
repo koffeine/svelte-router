@@ -5,9 +5,7 @@ import { writable } from 'svelte/store';
  * @type {import('svelte/store').Writable<Value>}
  */
 // @ts-ignore: Subscribed after Router.init() has been called
-const writableStore = writable({});
+export const writableStore = writable({});
 
 /** @type {import('svelte/store').Readable<Value>} */
-const readableStore = { subscribe: writableStore.subscribe };
-
-export { writableStore, readableStore };
+export const readableStore = { subscribe: writableStore.subscribe };

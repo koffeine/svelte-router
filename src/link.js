@@ -1,7 +1,7 @@
 import { navigate } from './router.js';
 
 /** @param {HTMLAnchorElement} node */
-const link = (node) => {
+export const link = (node) => {
 	node.addEventListener('click', (event) => {
 		if (event.ctrlKey || event.metaKey || event.button !== 0) {
 			return;
@@ -12,5 +12,3 @@ const link = (node) => {
 		navigate(node.href);
 	});
 };
-
-export { link };
