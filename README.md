@@ -26,7 +26,7 @@ Router.init([
     { path: '*', redirect: '/welcome/unknown' }
 ]);
 
-new App({ target: document.body });
+export default new App({ target: document.body });
 ```
 
 `App.svelte`:
