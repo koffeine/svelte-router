@@ -4,7 +4,7 @@ import { Readable } from 'svelte/store';
 /**
  * Initialize router
  */
-export declare const init: (options: ({
+export declare const init: (routes: ({
 
 	/**
 	 * Anything [regexparam](https://www.npmjs.com/package/regexparam) supports

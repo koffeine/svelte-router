@@ -7,9 +7,9 @@ class Router {
 	/** @type {Routes} */
 	static #routes;
 
-	/** @param {({ path: string, redirect: string, component?: undefined } | { path: string, redirect?: undefined, component: () => Promise<{ default: import('svelte').SvelteComponent }> })[]} options */
-	static init(options) {
-		Router.#routes = new Routes(options);
+	/** @param {({ path: string, redirect: string, component?: undefined } | { path: string, redirect?: undefined, component: () => Promise<{ default: import('svelte').SvelteComponent }> })[]} routes */
+	static init(routes) {
+		Router.#routes = new Routes(routes);
 
 		window.addEventListener('popstate', () => Router.#notify());
 		Router.#notify();

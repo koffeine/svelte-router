@@ -4,9 +4,9 @@ export class Routes {
 
 	#routes;
 
-	/** @param {({ path: string, redirect: string, component?: undefined } | { path: string, redirect?: undefined, component: () => Promise<{ default: import('svelte').SvelteComponent }> })[]} options */
-	constructor(options) {
-		this.#routes = options.map((option) => new Route(option));
+	/** @param {({ path: string, redirect: string, component?: undefined } | { path: string, redirect?: undefined, component: () => Promise<{ default: import('svelte').SvelteComponent }> })[]} routes */
+	constructor(routes) {
+		this.#routes = routes.map((route) => new Route(route));
 	}
 
 	/** @param {string} path */
