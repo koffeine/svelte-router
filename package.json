@@ -36,12 +36,12 @@
     "regexparam": "^2"
   },
   "devDependencies": {
-    "@koffeine/eslint-config": "24.0.0",
+    "@koffeine/eslint-config": "24.9.0",
     "@rollup/plugin-node-resolve": "^13",
     "@typescript-eslint/eslint-plugin": "^5",
     "@typescript-eslint/parser": "^5",
     "esbuild": "^0",
-    "eslint": "8.1.0",
+    "eslint": "8.10.0",
     "rollup": "^2",
     "rollup-plugin-esbuild": "^4",
     "svelte": "^3",
