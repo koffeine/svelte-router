@@ -9,7 +9,7 @@ module.exports = {
 		sourceType: 'module'
 	},
 	env: {
-		es2021: true
+		es2022: true
 	},
 	overrides: [
 		{
