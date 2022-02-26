@@ -13,7 +13,7 @@ module.exports = {
 	},
 	overrides: [
 		{
-			files: './*',
+			files: [ './*', 'test/**/*' ],
 			excludedFiles: './types.d.ts',
 			env: {
 				node: true
