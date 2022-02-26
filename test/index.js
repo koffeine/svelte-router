@@ -1,6 +1,4 @@
-/* eslint-env mocha */
-
-import './jsdom.cjs';
+import jsdomGlobal from 'jsdom-global';
 import * as Router from '../src/index.js';
 import { get } from 'svelte/store';
 import assert from 'assert/strict';
@@ -16,6 +14,8 @@ const mockComponent = (name) =>
 /** @param {{ path: string, component: string, params?: { [key: string]: string | null }, query?: { [key: string]: string } }} actual */
 const check = (actual) => assert.deepEqual(get(Router.route), { params: {}, query: {}, ...actual });
 
+
+jsdomGlobal('', { url: 'http://localhost/' });
 
 await Router.init([
 	{ path: '/', component: mockComponent('Index') },
