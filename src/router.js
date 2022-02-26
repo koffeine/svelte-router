@@ -8,18 +8,18 @@ class Router {
 	static #routes;
 
 	/** @param {({ path: string, redirect: string, component?: undefined } | { path: string, redirect?: undefined, component: () => Promise<{ default: import('svelte').SvelteComponent }> })[]} routes */
-	static init(routes) {
+	static async init(routes) {
 		Router.#routes = new Routes(routes);
 
 		window.addEventListener('popstate', () => Router.#notify());
-		Router.#notify();
+		await Router.#notify();
 	}
 
 	/**
 	 * @param {string} path
 	 * @param {{ replace?: boolean, params?: { [key: string]: any }, query?: { [key: string]: any } }} options
 	 */
-	static navigate(path, { replace = false, params, query } = {}) {
+	static async navigate(path, { replace = false, params, query } = {}) {
 		if (params) {
 			path = inject(path, params);
 		}
@@ -30,7 +30,7 @@ class Router {
 
 		if (path !== location.pathname) {
 			history[`${replace ? 'replace' : 'push'}State`](null, '', path);
-			Router.#notify();
+			await Router.#notify();
 		}
 	}
 
@@ -39,7 +39,7 @@ class Router {
 		const route = Router.#routes.find(path);
 
 		if (route.isRedirect()) {
-			Router.navigate(route.getRedirect(), { replace: true });
+			await Router.navigate(route.getRedirect(), { replace: true });
 		} else {
 			store.set({
 				path,
