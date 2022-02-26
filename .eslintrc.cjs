@@ -13,7 +13,7 @@ module.exports = {
 	},
 	overrides: [
 		{
-			files: [ './*', 'test/**/*' ],
+			files: './*',
 			excludedFiles: './types.d.ts',
 			env: {
 				node: true
@@ -23,6 +23,13 @@ module.exports = {
 			files: [ './types.d.ts', 'src/**/*' ],
 			env: {
 				browser: true
+			}
+		},
+		{
+			files: 'test/**/*',
+			env: {
+				node: true,
+				mocha: true
 			}
 		},
 		{
