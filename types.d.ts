@@ -38,7 +38,7 @@ export declare const init: (routes: ({
 	 */
 	redirect?: undefined
 
-})[]) => void;
+})[]) => Promise<void>;
 
 /**
  * Navigate to a path
@@ -72,7 +72,7 @@ export declare const navigate: (
 
 	}
 
-) => void;
+) => Promise<void>;
 
 /**
  * Svelte readable store describing current route
