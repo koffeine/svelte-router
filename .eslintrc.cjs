@@ -37,7 +37,7 @@ module.exports = {
 			plugins: [ '@typescript-eslint' ],
 			parser: '@typescript-eslint/parser',
 			rules: {
-				'no-unused-vars': 'off', '@typescript-eslint/no-unused-vars': [ 'error', { vars: 'all', args: 'all', ignoreRestSiblings: false, caughtErrors: 'all' } ]
+				'no-unused-vars': 'off', '@typescript-eslint/no-unused-vars': [ 'error', { vars: 'all', args: 'after-used', ignoreRestSiblings: false, caughtErrors: 'all' } ]
 			}
 		},
 		{
