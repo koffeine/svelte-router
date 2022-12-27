@@ -5,7 +5,7 @@ import assert from 'assert/strict';
 
 /**
  * @param {string} name
- * @returns {() => Promise<{ default: import('svelte').SvelteComponent }>}
+ * @returns {() => Promise<{ default: import('svelte').ComponentType }>}
  */
 const mockComponent = (name) =>
 	// @ts-ignore: Mock component
