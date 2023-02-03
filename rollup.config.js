@@ -1,3 +1,5 @@
+/* global URL */
+
 import { readFileSync } from 'fs';
 import { defineConfig } from 'rollup';
 import nodeResolve from '@rollup/plugin-node-resolve';

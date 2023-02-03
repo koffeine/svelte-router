@@ -27,7 +27,7 @@
     "url": "git+https://github.com/koffeine/svelte-router.git"
   },
   "scripts": {
-    "test": "eslint src types.d.ts test && tsc -p jsconfig.json && mocha",
+    "test": "eslint . && tsc -p jsconfig.json && mocha",
     "build": "rollup -c",
     "prepublishOnly": "npm test && npm run build",
     "postpublish": "rm index.js"
@@ -36,20 +36,21 @@
     "regexparam": "^2"
   },
   "devDependencies": {
-    "@koffeine/eslint-config": "28.3.0",
+    "@koffeine/eslint-config": "30.4.0",
     "@rollup/plugin-node-resolve": "^15",
     "@types/jsdom-global": "^3",
     "@types/mocha": "^10",
     "@typescript-eslint/eslint-plugin": "^5",
     "@typescript-eslint/parser": "^5",
     "esbuild": "^0",
-    "eslint": "8.30.0",
+    "eslint": "8.43.0",
+    "globals": "^13",
     "jsdom-global": "^3",
     "mocha": "^10",
     "rollup": "^3",
     "rollup-plugin-esbuild": "^5",
     "svelte": "^3.49.0",
-    "typescript": "^4"
+    "typescript": "^5"
   },
   "peerDependencies": {
     "svelte": "^3.49.0"
