@@ -49,10 +49,10 @@
     "mocha": "^10",
     "rollup": "^3",
     "rollup-plugin-esbuild": "^5",
-    "svelte": "^3.49.0",
+    "svelte": "^4",
     "typescript": "^5"
   },
   "peerDependencies": {
-    "svelte": "^3.49.0"
+    "svelte": "^4"
   }
 }
