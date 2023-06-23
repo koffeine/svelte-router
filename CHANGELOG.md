@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+
+## [2.0.0] - 2023-06-23
+
 ### Changed
 
 - Updated to Svelte 4
