@@ -11,7 +11,7 @@ class Router {
 	static async init(routes) {
 		Router.#routes = new Routes(routes);
 
-		window.addEventListener('popstate', () => Router.#notify());
+		window.addEventListener('popstate', Router.#notify);
 		await Router.#notify();
 	}
 
