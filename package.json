@@ -33,7 +33,7 @@
     "postpublish": "rm index.js"
   },
   "dependencies": {
-    "regexparam": "^2"
+    "regexparam": "^3"
   },
   "devDependencies": {
     "@koffeine/eslint-config": "30.13.0",

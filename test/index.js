@@ -78,7 +78,7 @@ it('should handle navigation with redirect', async () => {
 it('should handle wildcard navigation', async () => {
 	await Router.navigate('/wildcard/any/thing');
 
-	check({ path: '/wildcard/any/thing', component: 'Wildcard', params: { wild: 'any/thing' } });
+	check({ path: '/wildcard/any/thing', component: 'Wildcard', params: { '*': 'any/thing' } });
 });
 
 it('should throw error on unknown path', async () => {
