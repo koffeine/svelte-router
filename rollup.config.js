@@ -8,7 +8,7 @@ import esbuild from 'rollup-plugin-esbuild';
 const pkg = JSON.parse(readFileSync(new URL('./package.json', import.meta.url)));
 
 export default defineConfig({
-	external: [ /node_modules/u ],
+	external: [ /node_modules/v ],
 	input: 'src/index.js',
 	plugins: [
 		nodeResolve(),
