@@ -17,7 +17,10 @@
     "types.d.ts"
   ],
   "exports": {
-    ".": "./index.js",
+    ".": {
+      "default": "./index.js",
+      "types": "./types.d.ts"
+    },
     "./package.json": "./package.json"
   },
   "type": "module",

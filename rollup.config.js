@@ -21,7 +21,7 @@ export default defineConfig({
 	output: [
 		{
 			generatedCode: 'es2015',
-			file: pkg.exports['.']
+			file: pkg.exports['.'].default
 		}
 	]
 });
