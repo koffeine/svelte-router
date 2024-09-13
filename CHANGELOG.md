@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+
+## [3.0.1] - 2024-09-13
+
 ### Changed
 
 - Added support for node16, nodenext & bundler module resolution strategies
