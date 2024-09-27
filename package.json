@@ -39,14 +39,14 @@
     "regexparam": "^3"
   },
   "devDependencies": {
-    "@koffeine/eslint-config": "37.0.0",
+    "@koffeine/eslint-config": "37.5.0",
     "@rollup/plugin-node-resolve": "^15",
     "@types/jsdom-global": "^3",
     "@types/mocha": "^10",
     "@typescript-eslint/eslint-plugin": "^8",
     "@typescript-eslint/parser": "^8",
     "esbuild": "^0",
-    "eslint": "9.10.0",
+    "eslint": "9.13.0",
     "globals": "^15",
     "jsdom-global": "^3",
     "mocha": "^10",
