@@ -7,7 +7,7 @@ class Router {
 	/** @type {Routes} */
 	static #routes;
 
-	/** @param {({ path: string, redirect: string, component?: undefined } | { path: string, redirect?: undefined, component: () => Promise<{ default: import('svelte').ComponentType }> })[]} routes */
+	/** @param {({ path: string, redirect: string, component?: undefined } | { path: string, redirect?: undefined, component: () => Promise<{ default: import('svelte').Component }> })[]} routes */
 	static async init(routes) {
 		Router.#routes = new Routes(routes);
 

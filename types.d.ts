@@ -1,4 +1,4 @@
-import { ComponentType } from 'svelte';
+import { Component } from 'svelte';
 import { Readable } from 'svelte/store';
 
 /**
@@ -31,7 +31,7 @@ export declare const init: (routes: ({
 	/**
 	 * Dynamic import to a Svelte component
 	 */
-	component: () => Promise<{ default: ComponentType }>,
+	component: () => Promise<{ default: Component }>,
 
 	/**
 	 * Should be `undefined` when `component` is set
@@ -87,7 +87,7 @@ export declare const route: Readable<{
 	/**
 	 * Component corresponding to current url
 	 */
-	component: ComponentType,
+	component: Component,
 
 	/**
 	 * Params of current url
