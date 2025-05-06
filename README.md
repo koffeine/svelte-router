@@ -8,7 +8,7 @@ Router for Svelte
 ## Installation
 
 ```sh
-npm install @koffeine/svelte-router --save-dev
+npm install @koffeine/svelte-router
 ```
 
 ## Usage
@@ -21,9 +21,9 @@ import App from './App.svelte';
 
 // Initialize router
 Router.init([
-    { path: '/welcome/:name', component: () => import('./Welcome.svelte') },
+	{ path: '/welcome/:name', component: () => import('./Welcome.svelte') },
 
-    { path: '*', redirect: '/welcome/unknown' }
+	{ path: '*', redirect: '/welcome/unknown' }
 ]);
 
 export default new App({ target: document.body });
@@ -31,7 +31,7 @@ export default new App({ target: document.body });
 
 `App.svelte`:
 
-```svelte
+```html
 <script>
 import { navigate, route, link } from '@koffeine/svelte-router';
 </script>
@@ -52,23 +52,21 @@ import { navigate, route, link } from '@koffeine/svelte-router';
 
 `Welcome.svelte`:
 
-```svelte
+```html
 <script>
 import { navigate, route } from '@koffeine/svelte-router';
 
 // Param
+/** @type {string} */
 export let name;
 
 let numbers = [ 1, 2, 3 ];
-let query;
+let query = { order: 'asc' };
 
 // Query param
 $: {
-    const order = $route.query.order === 'desc' ? -1 : 1;
-
-    numbers = numbers.sort((a, b) => (a - b) * order);
-
-    query = { order: $route.query.order === 'desc' ? 'asc' : 'desc' };
+	numbers = numbers.sort((a, b) => (a - b) * ($route.query.order === 'desc' ? -1 : 1));
+	query = { order: $route.query.order === 'desc' ? 'asc' : 'desc' };
 }
 </script>
 
@@ -77,9 +75,9 @@ $: {
 Numbers:
 
 <ul>
-    {#each numbers as number}
-        <li>{number}</li>
-    {/each}
+	{#each numbers as number (number)}
+		<li>{number}</li>
+	{/each}
 </ul>
 
 <!-- API navigation using current path, changing only query params -->
