@@ -31,7 +31,7 @@ export declare const init: (routes: ({
 	/**
 	 * Dynamic import to a Svelte component
 	 */
-	component: () => Promise<{ default: Component }>,
+	component: () => Promise<{ default: Component<any> }>,
 
 	/**
 	 * Should be `undefined` when `component` is set
