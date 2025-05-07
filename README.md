@@ -16,6 +16,7 @@ npm install @koffeine/svelte-router
 `main.js`:
 
 ```js
+import { mount } from 'svelte';
 import * as Router from '@koffeine/svelte-router';
 import App from './App.svelte';
 
@@ -26,7 +27,7 @@ Router.init([
 	{ path: '*', redirect: '/welcome/unknown' }
 ]);
 
-export default new App({ target: document.body });
+export default mount(App, { target: document.body });
 ```
 
 `App.svelte`:
