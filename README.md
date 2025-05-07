@@ -35,6 +35,8 @@ export default mount(App, { target: document.body });
 ```html
 <script>
 import { navigate, route, link } from '@koffeine/svelte-router';
+
+const RouteComponent = $derived($route.component);
 </script>
 
 <!-- Anchor navigation & using route.path -->
@@ -42,13 +44,13 @@ import { navigate, route, link } from '@koffeine/svelte-router';
 <a use:link href="/welcome/jane" class:active={$route.path === '/welcome/jane'}>Welcome Jane</a>
 
 <!-- API navigation -->
-<button type="button" on:click={() => navigate('/welcome/john')}>Welcome John</button>
+<button type="button" onclick={() => navigate('/welcome/john')}>Welcome John</button>
 
 <!-- API navigation using params -->
-<button type="button" on:click={() => navigate('/welcome/:name', { params: { name: 'jane' } })}>Welcome Jane</button>
+<button type="button" onclick={() => navigate('/welcome/:name', { params: { name: 'jane' } })}>Welcome Jane</button>
 
 <!-- Router outlet -->
-<svelte:component this={$route.component} {...$route.params} />
+<RouteComponent {...$route.params} />
 ```
 
 `Welcome.svelte`:
@@ -58,17 +60,12 @@ import { navigate, route, link } from '@koffeine/svelte-router';
 import { navigate, route } from '@koffeine/svelte-router';
 
 // Param
-/** @type {string} */
-export let name;
-
-let numbers = [ 1, 2, 3 ];
-let query = { order: 'asc' };
+/** @type {{ name: string }} */
+const { name } = $props();
 
 // Query param
-$: {
-	numbers = numbers.sort((a, b) => (a - b) * ($route.query.order === 'desc' ? -1 : 1));
-	query = { order: $route.query.order === 'desc' ? 'asc' : 'desc' };
-}
+const numbers = $derived([ 1, 2, 3 ].sort((a, b) => (a - b) * ($route.query.order === 'desc' ? -1 : 1)));
+const query = $derived({ order: $route.query.order === 'desc' ? 'asc' : 'desc' });
 </script>
 
 <h1>Welcome, {name[0].toUpperCase() + name.substring(1)}!</h1>
@@ -82,7 +79,7 @@ Numbers:
 </ul>
 
 <!-- API navigation using current path, changing only query params -->
-<button type="button" on:click={() => navigate($route.path, { query })}>Reverse</button>
+<button type="button" onclick={() => navigate($route.path, { query })}>Reverse</button>
 ```
 
 ## API
