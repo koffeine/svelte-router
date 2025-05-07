@@ -1,6 +1,6 @@
 <h1>
-	svelte-router
-	<a href="https://www.npmjs.com/package/@koffeine/svelte-router"><img alt="npm" src="https://img.shields.io/npm/v/@koffeine/svelte-router"></a>
+    svelte-router
+    <a href="https://www.npmjs.com/package/@koffeine/svelte-router"><img alt="npm" src="https://img.shields.io/npm/v/@koffeine/svelte-router"></a>
 </h1>
 
 Router for Svelte
@@ -22,9 +22,9 @@ import App from './App.svelte';
 
 // Initialize router
 Router.init([
-	{ path: '/welcome/:name', component: () => import('./Welcome.svelte') },
+    { path: '/welcome/:name', component: () => import('./Welcome.svelte') },
 
-	{ path: '*', redirect: '/welcome/unknown' }
+    { path: '*', redirect: '/welcome/unknown' }
 ]);
 
 export default mount(App, { target: document.body });
@@ -73,9 +73,9 @@ const query = $derived({ order: $route.query.order === 'desc' ? 'asc' : 'desc' }
 Numbers:
 
 <ul>
-	{#each numbers as number (number)}
-		<li>{number}</li>
-	{/each}
+    {#each numbers as number (number)}
+        <li>{number}</li>
+    {/each}
 </ul>
 
 <!-- API navigation using current path, changing only query params -->
