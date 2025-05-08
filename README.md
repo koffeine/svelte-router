@@ -21,7 +21,7 @@ import * as Router from '@koffeine/svelte-router';
 import App from './App.svelte';
 
 // Initialize router
-Router.init([
+await Router.init([
     { path: '/welcome/:name', component: () => import('./Welcome.svelte') },
 
     { path: '*', redirect: '/welcome/unknown' }
