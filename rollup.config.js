@@ -1,27 +1,14 @@
-/* global URL */
-
-import { readFileSync } from 'fs';
-import { defineConfig } from 'rollup';
 import nodeResolve from '@rollup/plugin-node-resolve';
-import esbuild from 'rollup-plugin-esbuild';
+import { minify } from 'rollup-plugin-esbuild';
+import pkg from './package.json' with { type: 'json' };
 
-const pkg = JSON.parse(readFileSync(new URL('./package.json', import.meta.url)));
-
-export default defineConfig({
-	external: [ /node_modules/v ],
+/** @type {import('rollup').RollupOptions} */
+export default {
+	external: /node_modules/v,
 	input: 'src/index.js',
 	plugins: [
 		nodeResolve(),
-		esbuild({
-			exclude: '**/*',
-			minify: true,
-			sourceMap: false
-		})
+		minify({ sourceMap: false })
 	],
-	output: [
-		{
-			generatedCode: 'es2015',
-			file: pkg.exports['.'].default
-		}
-	]
-});
+	output: [ { file: pkg.exports['.'].default } ]
+};
