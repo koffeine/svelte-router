@@ -7,12 +7,11 @@ import assert from 'assert/strict';
  * @param {string} name
  * @returns {() => Promise<{ default: import('svelte').Component }>}
  */
-const mockComponent = (name) =>
-	// @ts-ignore: Mock component
-	() => ({ default: name });
+// @ts-ignore: Mock component
+const mockComponent = (name) => () => ({ default: name });
 
-/** @param {{ path: string, component: string, params?: { [key: string]: string | null }, query?: { [key: string]: string } }} actual */
-const check = (actual) => assert.deepEqual(get(Router.route), { params: {}, query: {}, ...actual });
+/** @param {{ path: string, component: string, params?: { [key: string]: string | null }, query?: { [key: string]: string } }} expected */
+const check = (expected) => assert.deepEqual(get(Router.route), { params: {}, query: {}, ...expected });
 
 
 jsdomGlobal('', { url: 'http://localhost/' });
