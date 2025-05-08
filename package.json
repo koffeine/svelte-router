@@ -14,17 +14,16 @@
   "author": "Kornél Horváth <kornel.horvath@me.com>",
   "files": [
     "index.js",
-    "types.d.ts"
+    "index.d.ts"
   ],
   "exports": {
     ".": {
-      "default": "./index.js",
-      "types": "./types.d.ts"
+      "types": "./index.d.ts",
+      "default": "./index.js"
     },
     "./package.json": "./package.json"
   },
   "type": "module",
-  "types": "types.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/koffeine/svelte-router.git"
