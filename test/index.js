@@ -1,7 +1,7 @@
 import jsdomGlobal from 'jsdom-global';
-import * as Router from '../src/index.js';
-import { get } from 'svelte/store';
 import assert from 'assert/strict';
+import { get } from 'svelte/store';
+import * as Router from '../src/index.js';
 
 /**
  * @param {string} name
