@@ -30,7 +30,7 @@
   },
   "scripts": {
     "test": "eslint && tsc -p jsconfig.json && mocha",
-    "build": "rollup -c",
+    "build": "vite build && esbuild --minify <dist/svelte-router.js >index.js && rm -rf dist",
     "prepublishOnly": "npm test && npm run build",
     "postpublish": "rm index.js"
   },
@@ -39,7 +39,6 @@
   },
   "devDependencies": {
     "@koffeine/eslint-config": "41.0.0",
-    "@rollup/plugin-node-resolve": "^16",
     "@types/jsdom-global": "^3",
     "@types/mocha": "^10",
     "@typescript-eslint/eslint-plugin": "^8",
@@ -49,10 +48,9 @@
     "globals": "^16",
     "jsdom-global": "^3",
     "mocha": "^11",
-    "rollup": "^4",
-    "rollup-plugin-esbuild": "^6",
     "svelte": "^5",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vite": "^6"
   },
   "peerDependencies": {
     "svelte": "^5"
