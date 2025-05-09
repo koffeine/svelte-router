@@ -13,12 +13,6 @@ export default [
 		}
 	},
 	{
-		files: [ 'test/**/*.js' ],
-		languageOptions: {
-			globals: globals.mocha
-		}
-	},
-	{
 		files: [ 'index.d.ts' ],
 		languageOptions: {
 			globals: globals.browser,
