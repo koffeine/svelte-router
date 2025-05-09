@@ -9,7 +9,7 @@ export default {
 			]
 		},
 		lib: {
-			entry: 'src/index.js',
+			entry: 'src/lib/index.js',
 			formats: [ 'es' ]
 		},
 		reportCompressedSize: false
