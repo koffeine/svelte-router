@@ -19,7 +19,7 @@ export default [
 		}
 	},
 	{
-		files: [ 'types.d.ts' ],
+		files: [ 'index.d.ts' ],
 		languageOptions: {
 			globals: globals.browser,
 			parser: typescriptParser

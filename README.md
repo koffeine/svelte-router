@@ -84,7 +84,7 @@ Numbers:
 
 ## API
 
-<a href="https://github.com/koffeine/svelte-router/blob/master/types.d.ts">Go to declaration</a>
+<a href="https://github.com/koffeine/svelte-router/blob/master/index.d.ts">Go to declaration</a>
 
 ## License
 
