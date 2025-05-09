@@ -3,7 +3,7 @@
     <a href="https://www.npmjs.com/package/@koffeine/svelte-router"><img alt="npm" src="https://img.shields.io/npm/v/@koffeine/svelte-router"></a>
 </h1>
 
-Router for Svelte
+Router for Svelte 5
 
 ## Installation
 
@@ -94,10 +94,10 @@ Numbers:
 
 ## API
 
-<a href="https://github.com/koffeine/svelte-router/blob/master/index.d.ts">Go to declaration</a>
+[Go to declaration](https://github.com/koffeine/svelte-router/blob/master/index.d.ts)
 
 ## License
 
 Copyright © Kornél Horváth
 
-Licensed under the [MIT License](https://raw.githubusercontent.com/koffeine/svelte-router/master/LICENSE).
+Licensed under the [MIT License](https://raw.githubusercontent.com/koffeine/svelte-router/refs/heads/master/LICENSE).
