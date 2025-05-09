@@ -30,6 +30,7 @@
   },
   "scripts": {
     "test": "eslint && svelte-check --tsconfig jsconfig.json && vitest run",
+    "dev": "vite",
     "build": "vite build && esbuild --minify <dist/svelte-router.js >index.js && rm -rf dist",
     "prepublishOnly": "npm test && npm run build",
     "postpublish": "rm index.js"
@@ -39,6 +40,7 @@
   },
   "devDependencies": {
     "@koffeine/eslint-config": "41.0.0",
+    "@koffeine/kss": "3.0.0",
     "@sveltejs/vite-plugin-svelte": "^5",
     "@types/chai": "^5",
     "@types/jsdom-global": "^3",

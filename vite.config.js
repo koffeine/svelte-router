@@ -1,8 +1,12 @@
 import { svelte } from '@sveltejs/vite-plugin-svelte';
 
 /** @type {import('vite').UserConfigExport} */
-export default {
+export default ({ mode }) => ({
+	publicDir: mode === 'production' ? false : 'public',
+
 	plugins: [ svelte() ],
+
+	server: { open: true },
 
 	build: {
 		target: 'esnext',
@@ -18,4 +22,4 @@ export default {
 		},
 		reportCompressedSize: false
 	}
-};
+});
