@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+
+## [4.0.5] - 2025-05-13
+
 ### Fixed
 
 - Fixed type definition for link to use the proper Action type
