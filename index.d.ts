@@ -1,4 +1,5 @@
 import { Component } from 'svelte';
+import { Action } from 'svelte/action';
 import { Readable } from 'svelte/store';
 
 /**
@@ -103,6 +104,6 @@ export declare const route: Readable<{
 
 /**
  * Svelte action that can be used on `a` elements to change them from regular links to router links
- * @example <a use:link href="/welcome">Welcome</a>
+ * @example <a href="/welcome" use:link>Welcome</a>
  */
-export declare const link: (node: HTMLAnchorElement) => void;
+export declare const link: Action<HTMLAnchorElement>;

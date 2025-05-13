@@ -1,6 +1,6 @@
 import { navigate } from './router.js';
 
-/** @param {HTMLAnchorElement} node */
+/** @type {import('svelte/action').Action<HTMLAnchorElement>} */
 export const link = (node) => {
 	node.addEventListener('click', (event) => {
 		if (event.ctrlKey || event.metaKey || event.button !== 0) {
