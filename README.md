@@ -3,7 +3,7 @@
     <a href="https://www.npmjs.com/package/@koffeine/svelte-router"><img alt="npm" src="https://img.shields.io/npm/v/@koffeine/svelte-router"></a>
 </h1>
 
-Router for Svelte
+Router for Svelte 5
 
 ## Installation
 
@@ -22,9 +22,13 @@ import App from './App.svelte';
 
 // Initialize router
 await Router.init([
+    // Route with component
     { path: '/welcome/:name', component: () => import('./Welcome.svelte') },
 
+    // Route with redirect
     { path: '*', redirect: '/welcome/unknown' }
+
+    // Path matching is done by https://www.npmjs.com/package/regexparam
 ]);
 
 export default mount(App, { target: document.body });
@@ -34,20 +38,26 @@ export default mount(App, { target: document.body });
 
 ```html
 <script>
-import { navigate, route, link } from '@koffeine/svelte-router';
+import { route, link, navigate } from '@koffeine/svelte-router';
 
 const RouteComponent = $derived($route.component);
 </script>
 
 <!-- Anchor navigation & using route.path -->
-<a use:link href="/welcome/john" class:active={$route.path === '/welcome/john'}>Welcome John</a> |
-<a use:link href="/welcome/jane" class:active={$route.path === '/welcome/jane'}>Welcome Jane</a>
+<div>
+    <a href="/welcome/john" use:link class:active={$route.path === '/welcome/john'}>Welcome John</a>
+    |
+    <a href="/welcome/jane" use:link class:active={$route.path === '/welcome/jane'}>Welcome Jane</a>
+</div>
 
-<!-- API navigation -->
-<button type="button" onclick={() => navigate('/welcome/john')}>Welcome John</button>
+<!-- API navigation & using route.path -->
+<div>
+    <!-- Without params -->
+    <button type="button" disabled={$route.path === '/welcome/john'} onclick={() => navigate('/welcome/john')}>Welcome John</button>
 
-<!-- API navigation using params -->
-<button type="button" onclick={() => navigate('/welcome/:name', { params: { name: 'jane' } })}>Welcome Jane</button>
+    <!-- With params -->
+    <button type="button" disabled={$route.path === '/welcome/jane'} onclick={() => navigate('/welcome/:name', { params: { name: 'jane' } })}>Welcome Jane</button>
+</div>
 
 <!-- Router outlet -->
 <RouteComponent {...$route.params} />
@@ -57,7 +67,7 @@ const RouteComponent = $derived($route.component);
 
 ```html
 <script>
-import { navigate, route } from '@koffeine/svelte-router';
+import { route, navigate } from '@koffeine/svelte-router';
 
 // Param
 /** @type {{ name: string }} */
@@ -84,10 +94,10 @@ Numbers:
 
 ## API
 
-<a href="https://github.com/koffeine/svelte-router/blob/master/index.d.ts">Go to declaration</a>
+[Go to declaration](https://github.com/koffeine/svelte-router/blob/master/index.d.ts)
 
 ## License
 
 Copyright © Kornél Horváth
 
-Licensed under the [MIT License](https://raw.githubusercontent.com/koffeine/svelte-router/master/LICENSE).
+Licensed under the [MIT License](https://raw.githubusercontent.com/koffeine/svelte-router/refs/heads/master/LICENSE).
