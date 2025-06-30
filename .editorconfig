@@ -16,7 +16,3 @@ indent_size = 4
 [*.yaml]
 indent_style = space
 indent_size = 4
-
-[package.json]
-indent_style = space
-indent_size = 2

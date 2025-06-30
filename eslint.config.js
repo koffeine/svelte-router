@@ -7,21 +7,20 @@ import typescriptPlugin from '@typescript-eslint/eslint-plugin';
 export default [
 	koffeine,
 	{
-		files: [ 'src/**/*.js' ],
+		files: [ 'src/**/*', '**/*.ts' ],
 		languageOptions: {
 			globals: globals.browser
 		}
 	},
 	{
-		files: [ 'test/**/*.js' ],
+		files: [ 'test/**/*' ],
 		languageOptions: {
 			globals: globals.mocha
 		}
 	},
 	{
-		files: [ 'index.d.ts' ],
+		files: [ '**/*.ts' ],
 		languageOptions: {
-			globals: globals.browser,
 			parser: typescriptParser
 		},
 		plugins: {
