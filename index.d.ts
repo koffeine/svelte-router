@@ -5,7 +5,7 @@ import { Readable } from 'svelte/store';
 /**
  * Initialize router
  */
-export declare const init: (routes: ({
+export const init: (routes: ({
 
 	/**
 	 * Anything [regexparam](https://www.npmjs.com/package/regexparam) supports
@@ -44,7 +44,7 @@ export declare const init: (routes: ({
 /**
  * Navigate to a path
  */
-export declare const navigate: (
+export const navigate: (
 
 	/**
 	 * Path to navigate to
@@ -78,7 +78,7 @@ export declare const navigate: (
 /**
  * Svelte readable store describing current route
  */
-export declare const route: Readable<{
+export const route: Readable<{
 
 	/**
 	 * Path of current url
@@ -106,4 +106,4 @@ export declare const route: Readable<{
  * Svelte action that can be used on `a` elements to change them from regular links to router links
  * @example <a href="/welcome" use:link>Welcome</a>
  */
-export declare const link: Action<HTMLAnchorElement>;
+export const link: Action<HTMLAnchorElement>;
