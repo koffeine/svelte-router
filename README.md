@@ -13,7 +13,7 @@ npm install @koffeine/svelte-router
 
 ## Usage
 
-`main.js`:
+[`main.js`](https://github.com/koffeine/svelte-router/blob/master/demo/main.js):
 
 ```js
 import { mount } from 'svelte';
@@ -34,7 +34,7 @@ await Router.init([
 export default mount(App, { target: document.body });
 ```
 
-`App.svelte`:
+[`App.svelte`](https://github.com/koffeine/svelte-router/blob/master/demo/App.svelte):
 
 ```html
 <script>
@@ -63,7 +63,7 @@ const RouteComponent = $derived($route.component);
 <RouteComponent {...$route.params} />
 ```
 
-`Welcome.svelte`:
+[`Welcome.svelte`](https://github.com/koffeine/svelte-router/blob/master/demo/Welcome.svelte):
 
 ```html
 <script>

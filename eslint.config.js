@@ -9,7 +9,7 @@ export default [
 	...koffeine,
 	...koffeineSvelte,
 	{
-		files: [ 'src/**/*', '**/*.ts' ],
+		files: [ 'src/**/*', 'demo/**/*', '**/*.ts' ],
 		languageOptions: {
 			globals: globals.browser
 		}
