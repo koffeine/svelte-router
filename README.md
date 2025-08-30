@@ -43,9 +43,9 @@ import { route, link, navigate } from '@koffeine/svelte-router';
 
 <!-- Anchor navigation & using route.path -->
 <div>
-    <a href="/welcome/john" use:link class:active={route.path === '/welcome/john'}>Welcome John</a>
+    <a href="/welcome/john" {@attach link} class:active={route.path === '/welcome/john'}>Welcome John</a>
     |
-    <a href="/welcome/jane" use:link class:active={route.path === '/welcome/jane'}>Welcome Jane</a>
+    <a href="/welcome/jane" {@attach link} class:active={route.path === '/welcome/jane'}>Welcome Jane</a>
 </div>
 
 <!-- API navigation & using route.path -->

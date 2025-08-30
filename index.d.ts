@@ -1,5 +1,5 @@
 import { Component } from 'svelte';
-import { Action } from 'svelte/action';
+import { Attachment } from 'svelte/attachments';
 
 /**
  * Initialize router
@@ -102,7 +102,7 @@ export const route: {
 };
 
 /**
- * Svelte action that can be used on `a` elements to change them from regular links to router links
- * @example <a href="/welcome" use:link>Welcome</a>
+ * Svelte attachment that can be used on `a` elements to change them from regular links to router links
+ * @example <a href="/welcome" {@attach link}>Welcome</a>
  */
-export const link: Action<HTMLAnchorElement>;
+export const link: Attachment<HTMLAnchorElement>;

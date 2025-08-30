@@ -1,14 +1,14 @@
+import { on } from 'svelte/events';
 import { navigate } from './router.js';
 
-/** @type {import('svelte/action').Action<HTMLAnchorElement>} */
-export const link = (node) => {
-	node.addEventListener('click', (event) => {
+/** @type {import('svelte/attachments').Attachment<HTMLAnchorElement>} */
+export const link = (node) =>
+	on(node, 'click', (event) => {
 		if (event.ctrlKey || event.metaKey || event.button !== 0) {
 			return;
 		}
 
 		event.preventDefault();
 
-		navigate(node.href);
+		navigate(node.pathname);
 	});
-};
