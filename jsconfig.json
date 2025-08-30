@@ -9,6 +9,7 @@
 
 		// Modules
 		"module": "preserve",
+		"moduleResolution": "bundler", // svelte-check doesn't set default based on module
 
 		// JavaScript Support
 		"checkJs": true,
