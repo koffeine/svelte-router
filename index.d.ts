@@ -1,4 +1,4 @@
-import { Component } from 'svelte';
+import { Component, ComponentProps } from 'svelte';
 import { Action } from 'svelte/action';
 import { Readable } from 'svelte/store';
 
@@ -32,7 +32,7 @@ export const init: (routes: ({
 	/**
 	 * Dynamic import to a Svelte component
 	 */
-	component: () => Promise<{ default: Component<any> }>,
+	component: () => Promise<{ default: Component<ComponentProps> }>,
 
 	/**
 	 * Should be `undefined` when `component` is set
@@ -63,13 +63,13 @@ export const navigate: (
 		 * Params to inject into url
 		 * @example navigate('/welcome/:name', { params: { name: 'john' } }) // navigates to /welcome/john
 		 */
-		params?: { [key: string]: any },
+		params?: { [key: string]: unknown },
 
 		/**
 		 * Query params to add after path
 		 * @example navigate('/list', { query: { order: 'asc' } }) // navigates to /list?order=asc
 		 */
-		query?: { [key: string]: any }
+		query?: { [key: string]: string }
 
 	}
 

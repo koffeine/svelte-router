@@ -17,7 +17,7 @@ class Router {
 
 	/**
 	 * @param {string} path
-	 * @param {{ replace?: boolean, params?: { [key: string]: any }, query?: { [key: string]: any } }} options
+	 * @param {{ replace?: boolean, params?: { [key: string]: unknown }, query?: { [key: string]: string } }} options
 	 */
 	static async navigate(path, { replace = false, params, query } = {}) {
 		if (params) {
