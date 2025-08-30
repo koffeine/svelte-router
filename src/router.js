@@ -8,9 +8,13 @@ class Router {
 	/** @type {Routes} */
 	static #routes;
 
+	/** @type {string} */
+	static #baseUrl;
+
 	/** @type {typeof import('./index.d.ts').init} */
-	static async init(routes) {
+	static async init(routes, { baseUrl = '' } = {}) {
 		Router.#routes = new Routes(routes);
+		Router.#baseUrl = baseUrl.endsWith('/') ? baseUrl.substring(0, baseUrl.length - 1) : baseUrl;
 
 		on(window, 'popstate', Router.#notify);
 		await Router.#notify();
@@ -18,6 +22,8 @@ class Router {
 
 	/** @type {typeof import('./index.d.ts').navigate} */
 	static async navigate(path, { replace = false, params, query } = {}) {
+		path = Router.#baseUrl + path;
+
 		if (params) {
 			path = inject(path, params);
 		}
@@ -33,7 +39,7 @@ class Router {
 	}
 
 	static async #notify() {
-		const path = location.pathname;
+		const path = location.pathname.substring(Router.#baseUrl.length);
 		const route = Router.#routes.find(path);
 
 		if (route.isRedirect()) {

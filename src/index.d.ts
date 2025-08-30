@@ -29,7 +29,18 @@ export type Route = {
 export const init: (
 
 	/** Array of routes */
-	routes: Route[]
+	routes: Route[],
+
+	/** Options */
+	options?: {
+
+		/**
+		 * Base url
+		 * @default ''
+		 */
+		baseUrl?: string
+
+	}
 
 ) => Promise<void>;
 

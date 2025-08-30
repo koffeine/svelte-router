@@ -11,7 +11,13 @@ const routes = [
 ];
 
 // Initialize router
-init(routes);
+init(
+	routes,
+	{
+		// Base url, defaults to ''
+		baseUrl: import.meta.env.BASE_URL
+	}
+);
 </script>
 
 <!-- API navigation & using route.path -->

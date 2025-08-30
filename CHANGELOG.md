@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Added export for Route type
 - Added the same options to link as navigate has
+- Added support for base url
 
 ### Changed
 
