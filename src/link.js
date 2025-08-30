@@ -1,8 +1,9 @@
 import { navigate } from './router.js';
 
-/** @type {import('svelte/action').Action<HTMLAnchorElement>} */
+/** @type {import('svelte/attachments').Attachment<HTMLAnchorElement>} */
 export const link = (node) => {
-	node.addEventListener('click', (event) => {
+	/** @param {PointerEvent} event */
+	const eventListener = (event) => {
 		if (event.ctrlKey || event.metaKey || event.button !== 0) {
 			return;
 		}
@@ -10,5 +11,9 @@ export const link = (node) => {
 		event.preventDefault();
 
 		navigate(node.href);
-	});
+	};
+
+	node.addEventListener('click', eventListener);
+
+	return () => node.removeEventListener('click', eventListener);
 };
