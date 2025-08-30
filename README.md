@@ -5,6 +5,10 @@
 
 Router for Svelte 5
 
+## Demo
+
+[https://koffeine.github.io/svelte-router/](https://koffeine.github.io/svelte-router/)
+
 ## Installation
 
 ```sh

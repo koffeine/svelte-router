@@ -29,6 +29,8 @@
 	"scripts": {
 		"test": "eslint && svelte-check --tsconfig jsconfig.json && vitest run",
 		"dev": "vite",
+		"build": "vite build",
+		"preview": "vite preview",
 		"prepublishOnly": "npm test"
 	},
 	"dependencies": {
