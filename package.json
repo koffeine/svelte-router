@@ -28,7 +28,7 @@
 	},
 	"type": "module",
 	"scripts": {
-		"test": "eslint && tsc -p jsconfig.json && mocha",
+		"test": "eslint && svelte-check --tsconfig jsconfig.json && mocha",
 		"prepublishOnly": "npm test"
 	},
 	"dependencies": {
@@ -36,6 +36,8 @@
 	},
 	"devDependencies": {
 		"@koffeine/eslint-config": "44.3.1",
+		"@koffeine/eslint-config-svelte": "1.1.0",
+		"@sveltejs/vite-plugin-svelte": "^6",
 		"@types/jsdom-global": "^3",
 		"@types/mocha": "^10",
 		"@types/node": "^22",
@@ -46,7 +48,7 @@
 		"jsdom-global": "^3",
 		"mocha": "^11",
 		"svelte": "^5",
-		"typescript": "^5"
+		"svelte-check": "^4"
 	},
 	"peerDependencies": {
 		"svelte": "^5"
