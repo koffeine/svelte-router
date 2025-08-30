@@ -13,12 +13,6 @@ export default [
 		}
 	},
 	{
-		files: [ 'test/**/*' ],
-		languageOptions: {
-			globals: globals.mocha
-		}
-	},
-	{
 		files: [ '**/*.ts' ],
 		languageOptions: {
 			parser: typescriptParser
