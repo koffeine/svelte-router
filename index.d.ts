@@ -1,6 +1,5 @@
 import { Component } from 'svelte';
 import { Action } from 'svelte/action';
-import { Readable } from 'svelte/store';
 
 /**
  * Initialize router
@@ -76,9 +75,9 @@ export const navigate: (
 ) => Promise<void>;
 
 /**
- * Svelte readable store describing current route
+ * Svelte state describing current route
  */
-export const route: Readable<{
+export const route: {
 
 	/**
 	 * Path of current url
@@ -100,7 +99,7 @@ export const route: Readable<{
 	 */
 	query: { [key: string]: string }
 
-}>;
+};
 
 /**
  * Svelte action that can be used on `a` elements to change them from regular links to router links

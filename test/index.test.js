@@ -1,7 +1,6 @@
 import jsdomGlobal from 'jsdom-global';
 import { test } from 'vitest';
 import assert from 'assert/strict';
-import { get } from 'svelte/store';
 import * as Router from '../src/index.js';
 
 /**
@@ -12,7 +11,7 @@ import * as Router from '../src/index.js';
 const mockComponent = (name) => () => ({ default: name });
 
 /** @param {{ path: string, component: string, params?: { [key: string]: string | null }, query?: { [key: string]: string } }} expected */
-const check = (expected) => assert.deepEqual(get(Router.route), { params: {}, query: {}, ...expected });
+const check = (expected) => assert.deepEqual(Router.route, { params: {}, query: {}, ...expected });
 
 
 jsdomGlobal('', { url: 'http://localhost/' });

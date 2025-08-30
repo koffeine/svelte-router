@@ -1,6 +1,6 @@
 import { inject } from 'regexparam';
 import { Routes } from './routes.js';
-import { writableStore as store } from './store.js';
+import { setRoute } from './route.svelte.js';
 
 class Router {
 
@@ -41,7 +41,7 @@ class Router {
 		if (route.isRedirect()) {
 			await Router.navigate(route.getRedirect(), { replace: true });
 		} else {
-			store.set({
+			setRoute({
 				path,
 				component: await route.getComponent(),
 				params: route.getParams(path),
