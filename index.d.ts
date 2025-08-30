@@ -51,7 +51,7 @@ export const navigate: (
 	 */
 	path: string,
 
-	{ replace, params, query }?: {
+	options?: {
 
 		/**
 		 * If `true`, `History.replaceState()` will be used, otherwise `History.pushState()`
