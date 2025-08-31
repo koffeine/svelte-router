@@ -26,7 +26,7 @@ class Router {
 		}
 
 		if (query) {
-			path += `?${new URLSearchParams(query).toString()}`;
+			path += `?${new URLSearchParams(query)}`;
 		}
 
 		if (path !== location.pathname) {
