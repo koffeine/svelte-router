@@ -10,5 +10,5 @@ export const link = (node) =>
 
 		event.preventDefault();
 
-		navigate(node.pathname);
+		navigate(node.pathname + node.search);
 	});
