@@ -1,3 +1,4 @@
+import { on } from 'svelte/events';
 import { inject } from 'regexparam';
 import { Routes } from './routes.js';
 import { setRoute } from './route.svelte.js';
@@ -11,7 +12,7 @@ class Router {
 	static async init(routes) {
 		Router.#routes = new Routes(routes);
 
-		window.addEventListener('popstate', Router.#notify);
+		on(window, 'popstate', Router.#notify);
 		await Router.#notify();
 	}
 

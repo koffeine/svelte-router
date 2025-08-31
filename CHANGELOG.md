@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Changed route from a store to a state
 - Changed link from an Action to an Attachment
 - Changed link from using addEventListener to on (svelte/events)
+- Changed init from using addEventListener to on (svelte/events)
 
 ### Removed
 
