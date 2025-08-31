@@ -29,7 +29,7 @@ class Router {
 			path += `?${new URLSearchParams(query)}`;
 		}
 
-		if (path !== location.pathname) {
+		if (path !== location.pathname + location.search) {
 			history[`${replace ? 'replace' : 'push'}State`](null, '', path);
 			await Router.#notify();
 		}
