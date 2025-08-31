@@ -24,8 +24,7 @@
 		".": {
 			"types": "./index.d.ts",
 			"default": "./src/index.js"
-		},
-		"./package.json": "./package.json"
+		}
 	},
 	"type": "module",
 	"scripts": {
