@@ -38,15 +38,8 @@ export default mount(App, { target: document.body });
 
 ```html
 <script>
-import { route, link, navigate } from '@koffeine/svelte-router';
+import { navigate, route, link } from '@koffeine/svelte-router';
 </script>
-
-<!-- Anchor navigation & using route.path -->
-<div>
-    <a href="/welcome/john" {@attach link} class:active={route.path === '/welcome/john'}>Welcome John</a>
-    |
-    <a href="/welcome/jane" {@attach link} class:active={route.path === '/welcome/jane'}>Welcome Jane</a>
-</div>
 
 <!-- API navigation & using route.path -->
 <div>
@@ -57,6 +50,13 @@ import { route, link, navigate } from '@koffeine/svelte-router';
     <button type="button" disabled={route.path === '/welcome/jane'} onclick={() => navigate('/welcome/:name', { params: { name: 'jane' } })}>Welcome Jane</button>
 </div>
 
+<!-- Anchor navigation & using route.path -->
+<div>
+    <a href="/welcome/john" {@attach link} class:active={route.path === '/welcome/john'}>Welcome John</a>
+    |
+    <a href="/welcome/jane" {@attach link} class:active={route.path === '/welcome/jane'}>Welcome Jane</a>
+</div>
+
 <!-- Router outlet -->
 <route.component {...route.params} />
 ```
@@ -65,7 +65,7 @@ import { route, link, navigate } from '@koffeine/svelte-router';
 
 ```html
 <script>
-import { route, navigate } from '@koffeine/svelte-router';
+import { navigate, route, link } from '@koffeine/svelte-router';
 
 // Param
 /** @type {{ name: string }} */
@@ -88,6 +88,9 @@ Numbers:
 
 <!-- API navigation using current path, changing only query params -->
 <button type="button" onclick={() => navigate(route.path, { query })}>Reverse</button>
+
+<!-- Anchor navigation using current path, changing only query params -->
+<a href="{route.path}?{new URLSearchParams(query)}" {@attach link}>Reverse</a>
 ```
 
 ## API
