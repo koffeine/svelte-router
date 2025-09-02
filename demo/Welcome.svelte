@@ -24,4 +24,4 @@ Numbers:
 <button type="button" onclick={() => navigate(route.path, { query })}>Reverse</button>
 
 <!-- Anchor navigation using current path, changing only query params -->
-<a href="{route.path}?{new URLSearchParams(query)}" {@attach link}>Reverse</a>
+<a href={route.path} {@attach link({ query })}>Reverse</a>

@@ -43,9 +43,11 @@ init(routes);
 
 <!-- Anchor navigation & using route.path -->
 <div>
-    <a href="/welcome/john" {@attach link} class:active={route.path === '/welcome/john'}>Welcome John</a>
+    <!-- Without params -->
+    <a href="/welcome/john" {@attach link()} class:active={route.path === '/welcome/john'}>Welcome John</a>
     |
-    <a href="/welcome/jane" {@attach link} class:active={route.path === '/welcome/jane'}>Welcome Jane</a>
+    <!-- With params -->
+    <a href="/welcome/:name" {@attach link({ params: { name: 'jane' } })} class:active={route.path === '/welcome/jane'}>Welcome Jane</a>
 </div>
 
 <!-- Router outlet -->
@@ -81,7 +83,7 @@ Numbers:
 <button type="button" onclick={() => navigate(route.path, { query })}>Reverse</button>
 
 <!-- Anchor navigation using current path, changing only query params -->
-<a href="{route.path}?{new URLSearchParams(query)}" {@attach link}>Reverse</a>
+<a href={route.path} {@attach link({ query })}>Reverse</a>
 ```
 
 ## API
