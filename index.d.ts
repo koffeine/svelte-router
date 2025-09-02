@@ -1,55 +1,43 @@
 import { Component } from 'svelte';
 import { Attachment } from 'svelte/attachments';
 
-/**
- * Initialize router
- */
-export const init: (routes: ({
+/** Initialize router */
+export const init: (
 
-	/**
-	 * Anything [regexparam](https://www.npmjs.com/package/regexparam) supports
-	 */
-	path: string,
+	/** Array of routes */
+	routes: ({
 
-	/**
-	 * Path to redirect to
-	 */
-	redirect: string,
+		/** Anything [regexparam](https://www.npmjs.com/package/regexparam) supports */
+		path: string,
 
-	/**
-	 * Should be `undefined` when `redirect` is set
-	 */
-	component?: undefined
+		/** Path to redirect to */
+		redirect: string,
 
-} | {
+		/** Should be `undefined` when `redirect` is set */
+		component?: undefined
 
-	/**
-	 * Anything [regexparam](https://www.npmjs.com/package/regexparam) supports
-	 */
-	path: string,
+	} | {
 
-	/**
-	 * Dynamic import to a Svelte component
-	 */
-	component: () => Promise<{ default: Component<any> }>,
+		/** Anything [regexparam](https://www.npmjs.com/package/regexparam) supports */
+		path: string,
 
-	/**
-	 * Should be `undefined` when `component` is set
-	 */
-	redirect?: undefined
+		/** Dynamic import to a component */
+		component: () => Promise<{ default: Component<any> }>,
 
-})[]) => Promise<void>;
+		/** Should be `undefined` when `component` is set */
+		redirect?: undefined
 
-/**
- * Navigate to a path
- */
+	})[]
+
+) => Promise<void>;
+
+/** Navigate to a path */
 export const navigate: (
 
-	/**
-	 * Path to navigate to
-	 */
+	/** Path to navigate to */
 	path: string,
 
+	/** Options */
 	options?: {
 
 		/**
@@ -58,51 +46,32 @@ export const navigate: (
 		 */
 		replace?: boolean,
 
-		/**
-		 * Params to inject into url
-		 * @example navigate('/welcome/:name', { params: { name: 'john' } }) // navigates to /welcome/john
-		 */
+		/** Params to inject into url */
 		params?: { [key: string]: any },
 
-		/**
-		 * Query params to add after path
-		 * @example navigate('/list', { query: { order: 'asc' } }) // navigates to /list?order=asc
-		 */
+		/** Query params to add after path */
 		query?: { [key: string]: any }
 
 	}
 
 ) => Promise<void>;
 
-/**
- * Svelte state describing current route
- */
+/** State describing current route */
 export const route: {
 
-	/**
-	 * Path of current url
-	 */
+	/** Path of current url */
 	path: string,
 
-	/**
-	 * Component corresponding to current url
-	 */
+	/** Component corresponding to current url */
 	component: Component,
 
-	/**
-	 * Params of current url
-	 */
+	/** Params of current url */
 	params: { [key: string]: string | null },
 
-	/**
-	 * Query params of current url
-	 */
+	/** Query params of current url */
 	query: { [key: string]: string }
 
 };
 
-/**
- * Svelte attachment that can be used on `a` elements to change them from regular links to router links
- * @example <a href="/welcome" {@attach link}>Welcome</a>
- */
+/** Attachment that can be used on `a` elements to change them from regular links to router links */
 export const link: Attachment<HTMLAnchorElement>;
