@@ -8,7 +8,7 @@ class Router {
 	/** @type {Routes} */
 	static #routes;
 
-	/** @param {({ path: string, redirect: string, component?: undefined } | { path: string, redirect?: undefined, component: () => Promise<{ default: import('svelte').Component }> })[]} routes */
+	/** @type {typeof import('./index.d.ts').init} */
 	static async init(routes) {
 		Router.#routes = new Routes(routes);
 
@@ -16,10 +16,7 @@ class Router {
 		await Router.#notify();
 	}
 
-	/**
-	 * @param {string} path
-	 * @param {{ replace?: boolean, params?: { [key: string]: any }, query?: { [key: string]: any } }} options
-	 */
+	/** @type {typeof import('./index.d.ts').navigate} */
 	static async navigate(path, { replace = false, params, query } = {}) {
 		if (params) {
 			path = inject(path, params);

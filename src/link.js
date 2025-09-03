@@ -1,7 +1,7 @@
 import { on } from 'svelte/events';
 import { navigate } from './router.js';
 
-/** @type {import('svelte/attachments').Attachment<HTMLAnchorElement>} */
+/** @type {typeof import('./index.d.ts').link} */
 export const link = (node) =>
 	on(node, 'click', (event) => {
 		if (event.ctrlKey || event.metaKey || event.button !== 0) {

@@ -1,9 +1,8 @@
-/** @typedef {{ path: string, component: import('svelte').Component, params: { [key: string]: string | null }, query: { [key: string]: string } }} Value */
-
-/** @type {Value} */
+/** @type {typeof import('./index.d.ts').route} */
 // @ts-expect-error: Read after Router.init() has been called
 let state = $state({});
 
+/** @type {typeof import('./index.d.ts').route} */
 export const route = {
 	get path() {
 		return state.path;
@@ -22,5 +21,5 @@ export const route = {
 	}
 };
 
-/** @param {Value} newRoute */
+/** @param {typeof import('./index.d.ts').route} newRoute */
 export const setRoute = (newRoute) => state = newRoute;
