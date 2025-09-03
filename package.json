@@ -17,12 +17,11 @@
 		"url": "git+https://github.com/koffeine/svelte-router.git"
 	},
 	"files": [
-		"src",
-		"index.d.ts"
+		"src"
 	],
 	"exports": {
 		".": {
-			"types": "./index.d.ts",
+			"types": "./src/index.d.ts",
 			"default": "./src/index.js"
 		}
 	},
