@@ -1,33 +1,35 @@
 import { Component } from 'svelte';
 import { Attachment } from 'svelte/attachments';
 
+export type Route = {
+
+	/** Anything [regexparam](https://www.npmjs.com/package/regexparam) supports */
+	path: string,
+
+	/** Path to redirect to */
+	redirect: string,
+
+	/** Should be `undefined` when `redirect` is set */
+	component?: undefined
+
+} | {
+
+	/** Anything [regexparam](https://www.npmjs.com/package/regexparam) supports */
+	path: string,
+
+	/** Dynamic import to a component */
+	component: () => Promise<{ default: Component<any> }>,
+
+	/** Should be `undefined` when `component` is set */
+	redirect?: undefined
+
+};
+
 /** Initialize router */
 export const init: (
 
 	/** Array of routes */
-	routes: ({
-
-		/** Anything [regexparam](https://www.npmjs.com/package/regexparam) supports */
-		path: string,
-
-		/** Path to redirect to */
-		redirect: string,
-
-		/** Should be `undefined` when `redirect` is set */
-		component?: undefined
-
-	} | {
-
-		/** Anything [regexparam](https://www.npmjs.com/package/regexparam) supports */
-		path: string,
-
-		/** Dynamic import to a component */
-		component: () => Promise<{ default: Component<any> }>,
-
-		/** Should be `undefined` when `component` is set */
-		redirect?: undefined
-
-	})[]
+	routes: Route[]
 
 ) => Promise<void>;
 

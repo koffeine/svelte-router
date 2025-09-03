@@ -19,14 +19,17 @@ npm install @koffeine/svelte-router
 <script>
 import { init, navigate, route, link } from '@koffeine/svelte-router';
 
-// Initialize router
-init([
+/** @type {import('@koffeine/svelte-router').Route[]} */
+const routes = [
     // Route with component
     { path: '/welcome/:name', component: () => import('./Welcome.svelte') },
 
     // Route with redirect
     { path: '*', redirect: '/welcome/unknown' }
-]);
+];
+
+// Initialize router
+init(routes);
 </script>
 
 <!-- API navigation & using route.path -->

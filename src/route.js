@@ -10,7 +10,7 @@ export class Route {
 
 	#component;
 
-	/** @param {Parameters<typeof import('./index.d.ts').init>[0][0]} route */
+	/** @param {import('./index.d.ts').Route} route */
 	constructor({ path, redirect, component }) {
 		const { pattern, keys } = parse(path);
 
