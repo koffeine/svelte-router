@@ -1,7 +1,7 @@
 /** @typedef {{ path: string, component: import('svelte').Component, params: { [key: string]: string | null }, query: { [key: string]: string } }} Value */
 
 /** @type {Value} */
-// @ts-ignore: Read after Router.init() has been called
+// @ts-expect-error: Read after Router.init() has been called
 let state = $state({});
 
 export const route = {

@@ -7,7 +7,7 @@ import * as Router from '../src/index.js';
  * @param {string} name
  * @returns {() => Promise<{ default: import('svelte').Component }>}
  */
-// @ts-ignore: Mock component
+// @ts-expect-error: Mock component
 const mockComponent = (name) => () => ({ default: name });
 
 /** @param {{ path: string, component: string, params?: { [key: string]: string | null }, query?: { [key: string]: string } }} expected */

@@ -31,18 +31,18 @@ export class Route {
 
 	/** @returns {string} */
 	getRedirect() {
-		// @ts-ignore: Called when isRedirect() returns true
+		// @ts-expect-error: Called when isRedirect() returns true
 		return this.#redirect;
 	}
 
 	async getComponent() {
-		// @ts-ignore: Called when isRedirect() returns false
+		// @ts-expect-error: Called when isRedirect() returns false
 		return (await this.#component()).default;
 	}
 
 	/** @param {string} path */
 	getParams(path) {
-		// @ts-ignore: Called when matches returns true
+		// @ts-expect-error: Called when matches() returns true
 		const matches = this.#pattern.exec(path).slice(1);
 
 		/** @type {{ [key: string]: string | null }} */
