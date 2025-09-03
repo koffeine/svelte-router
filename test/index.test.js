@@ -10,7 +10,7 @@ import * as Router from '../src/index.js';
 // @ts-expect-error: Mock component
 const mockComponent = (name) => () => ({ default: name });
 
-/** @param {{ path: string, component: string, params?: { [key: string]: string | null }, query?: { [key: string]: string } }} expected */
+/** @param {{ path: string, component: string, params?: { [key: string]: string | null | undefined }, query?: { [key: string]: string | undefined } }} expected */
 const check = (expected) => assert.deepEqual(Router.route, { params: {}, query: {}, ...expected });
 
 

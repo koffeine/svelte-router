@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Fixed initial state to be type-safe
+- Fixed types of values for params and query in route to include undefined
 
 
 ## [5.0.1] - 2025-08-31

@@ -68,10 +68,10 @@ export const route: {
 	component: Component | null,
 
 	/** Params of current url */
-	params: { [key: string]: string | null },
+	params: { [key: string]: string | null | undefined },
 
 	/** Query params of current url */
-	query: { [key: string]: string }
+	query: { [key: string]: string | undefined }
 
 };
 
