@@ -10,7 +10,7 @@ import * as Router from '../src/index.js';
 // @ts-expect-error: Mock component
 const mockComponent = (name) => () => ({ default: name });
 
-/** @param {{ path: string, component: string, params?: { [key: string]: string | null | undefined }, query?: { [key: string]: string | undefined } }} expected */
+/** @param {{ path: string, component: string, params?: { [key: string]: string | undefined }, query?: { [key: string]: string | undefined } }} expected */
 const check = (expected) => assert.deepEqual(Router.route, { params: {}, query: {}, ...expected });
 
 
@@ -53,7 +53,8 @@ test('should handle navigation with params #2', async () => {
 test('should handle navigation with optional params', async () => {
 	await Router.navigate('/optional-params');
 
-	check({ path: '/optional-params', component: 'OptionalParams', params: { param: null } });
+	// eslint-disable-next-line no-undefined
+	check({ path: '/optional-params', component: 'OptionalParams', params: { param: undefined } });
 });
 
 test('should handle navigation with query params #1', async () => {

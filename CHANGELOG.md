@@ -12,6 +12,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Added export for Route type
 
+### Changed
+
+- Changed type of value for missing optional parameters for params in route from null to undefined
+
 ### Fixed
 
 - Fixed initial state to be type-safe

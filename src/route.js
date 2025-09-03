@@ -45,11 +45,11 @@ export class Route {
 		// @ts-expect-error: Called when matches() returns true
 		const matches = this.#pattern.exec(path).slice(1);
 
-		/** @type {{ [key: string]: string | null }} */
+		/** @type {{ [key: string]: string | undefined }} */
 		const params = {};
 
 		for (let i = 0; i < this.#keys.length; i++) {
-			params[this.#keys[i]] = matches[i] || null;
+			params[this.#keys[i]] = matches[i];
 		}
 
 		return params;
