@@ -49,10 +49,10 @@ export const navigate: (
 		replace?: boolean,
 
 		/** Params to inject into url */
-		params?: { [key: string]: any },
+		params?: { [key: string]: string },
 
 		/** Query params to add after path */
-		query?: { [key: string]: any }
+		query?: { [key: string]: string }
 
 	}
 

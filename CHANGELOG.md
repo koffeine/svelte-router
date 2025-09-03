@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Changed type of value for missing optional parameters for params in route from null to undefined
+- Changed types of values for params and query in navigate from any to string
 
 ### Fixed
 
