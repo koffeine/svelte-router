@@ -1,6 +1,5 @@
 /** @type {typeof import('./index.d.ts').route} */
-// @ts-expect-error: Read after Router.init() has been called
-let state = $state({});
+let state = $state({ path: '', component: null, params: {}, query: {} });
 
 /** @type {typeof import('./index.d.ts').route} */
 export const route = {

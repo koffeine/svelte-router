@@ -13,32 +13,20 @@ npm install @koffeine/svelte-router
 
 ## Usage
 
-[`main.js`](https://github.com/koffeine/svelte-router/blob/master/demo/main.js):
+[`App.svelte`](https://github.com/koffeine/svelte-router/blob/master/demo/App.svelte):
 
-```js
-import { mount } from 'svelte';
-import * as Router from '@koffeine/svelte-router';
-import App from './App.svelte';
+```html
+<script>
+import { init, navigate, route, link } from '@koffeine/svelte-router';
 
 // Initialize router
-await Router.init([
+init([
     // Route with component
     { path: '/welcome/:name', component: () => import('./Welcome.svelte') },
 
     // Route with redirect
     { path: '*', redirect: '/welcome/unknown' }
-
-    // Path matching is done by https://www.npmjs.com/package/regexparam
 ]);
-
-export default mount(App, { target: document.body });
-```
-
-[`App.svelte`](https://github.com/koffeine/svelte-router/blob/master/demo/App.svelte):
-
-```html
-<script>
-import { navigate, route, link } from '@koffeine/svelte-router';
 </script>
 
 <!-- API navigation & using route.path -->

@@ -1,5 +1,14 @@
 <script>
-import { navigate, route, link } from '@koffeine/svelte-router';
+import { init, navigate, route, link } from '@koffeine/svelte-router';
+
+// Initialize router
+init([
+	// Route with component
+	{ path: '/welcome/:name', component: () => import('./Welcome.svelte') },
+
+	// Route with redirect
+	{ path: '*', redirect: '/welcome/unknown' }
+]);
 </script>
 
 <!-- API navigation & using route.path -->

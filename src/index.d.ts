@@ -63,7 +63,7 @@ export const route: {
 	path: string,
 
 	/** Component corresponding to current url */
-	component: Component,
+	component: Component | null,
 
 	/** Params of current url */
 	params: { [key: string]: string | null },
