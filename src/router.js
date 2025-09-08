@@ -22,17 +22,16 @@ class Router {
 
 	/** @type {typeof import('./index.d.ts').navigate} */
 	static async navigate(path, { replace = false, params, query } = {}) {
-		const parts = path.split('?');
+		const [ pathPart, queryPart ] = path.split('?');
 
-		path = Router.#baseUrl + parts[0];
-		query = { ...Object.fromEntries(new URLSearchParams(parts[1])), ...query };
+		path = Router.#baseUrl + pathPart;
 
 		if (params) {
 			path = inject(path, params);
 		}
 
-		if (query) {
-			path += `?${new URLSearchParams(query)}`;
+		if (queryPart || query) {
+			path += `?${new URLSearchParams({ ...Object.fromEntries(new URLSearchParams(queryPart)), ...query })}`;
 		}
 
 		if (path !== location.pathname + location.search) {
