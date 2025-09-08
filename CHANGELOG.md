@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed handling of query params when they were present in both the path and options
+
 
 ## [6.0.0] - 2025-09-04
 

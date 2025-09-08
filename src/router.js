@@ -22,7 +22,10 @@ class Router {
 
 	/** @type {typeof import('./index.d.ts').navigate} */
 	static async navigate(path, { replace = false, params, query } = {}) {
-		path = Router.#baseUrl + path;
+		const parts = path.split('?');
+
+		path = Router.#baseUrl + parts[0];
+		query = { ...Object.fromEntries(new URLSearchParams(parts[1])), ...query };
 
 		if (params) {
 			path = inject(path, params);

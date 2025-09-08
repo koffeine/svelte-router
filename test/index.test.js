@@ -84,6 +84,12 @@ describe('query params', () => {
 
 		check({ path: '/query-params', component: 'QueryParams', query: { param: 'value' } });
 	});
+
+	test('should handle navigation with query params in path and options', async () => {
+		await Router.navigate('/query-params?param1=pathValue&param2=pathValue', { query: { param2: 'optionsValue', param3: 'optionsValue' } });
+
+		check({ path: '/query-params', component: 'QueryParams', query: { param1: 'pathValue', param2: 'optionsValue', param3: 'optionsValue' } });
+	});
 });
 
 test('should handle wildcard navigation', async () => {
