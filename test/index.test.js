@@ -1,5 +1,5 @@
 import jsdomGlobal from 'jsdom-global';
-import { test } from 'vitest';
+import { describe, test } from 'vitest';
 import assert from 'assert/strict';
 import * as Router from '../src/index.js';
 
@@ -18,12 +18,11 @@ jsdomGlobal('', { url: 'http://localhost/' });
 
 await Router.init([
 	{ path: '/', component: mockComponent('Index') },
-	{ path: '/no-params', component: mockComponent('NoParams') },
+	{ path: '/redirect', redirect: '/redirected' },
+	{ path: '/redirected', component: mockComponent('Redirected') },
 	{ path: '/params/:param', component: mockComponent('Params') },
 	{ path: '/optional-params/:param?', component: mockComponent('OptionalParams') },
 	{ path: '/query-params', component: mockComponent('QueryParams') },
-	{ path: '/redirect', redirect: '/redirected' },
-	{ path: '/redirected', component: mockComponent('Redirected') },
 	{ path: '/wildcard/*', component: mockComponent('Wildcard') }
 ]);
 
@@ -32,47 +31,59 @@ test('should handle initial navigation', () => {
 	check({ path: '/', component: 'Index' });
 });
 
-test('should handle navigation with no params', async () => {
-	await Router.navigate('/no-params');
-
-	check({ path: '/no-params', component: 'NoParams' });
-});
-
-test('should handle navigation with params #1', async () => {
-	await Router.navigate('/params/:param', { params: { param: 'value' } });
-
-	check({ path: '/params/value', component: 'Params', params: { param: 'value' } });
-});
-
-test('should handle navigation with params #2', async () => {
-	await Router.navigate('/params/value');
-
-	check({ path: '/params/value', component: 'Params', params: { param: 'value' } });
-});
-
-test('should handle navigation with optional params', async () => {
-	await Router.navigate('/optional-params');
-
-	// eslint-disable-next-line no-undefined
-	check({ path: '/optional-params', component: 'OptionalParams', params: { param: undefined } });
-});
-
-test('should handle navigation with query params #1', async () => {
-	await Router.navigate('/query-params', { query: { param: 'value' } });
-
-	check({ path: '/query-params', component: 'QueryParams', query: { param: 'value' } });
-});
-
-test('should handle navigation with query params #2', async () => {
-	await Router.navigate('/query-params?param=value');
-
-	check({ path: '/query-params', component: 'QueryParams', query: { param: 'value' } });
-});
-
 test('should handle navigation with redirect', async () => {
 	await Router.navigate('/redirect');
 
 	check({ path: '/redirected', component: 'Redirected' });
+});
+
+describe('params', () => {
+	test('should handle navigation with params in path', async () => {
+		await Router.navigate('/params/value');
+
+		check({ path: '/params/value', component: 'Params', params: { param: 'value' } });
+	});
+
+	test('should handle navigation with params in options', async () => {
+		await Router.navigate('/params/:param', { params: { param: 'value' } });
+
+		check({ path: '/params/value', component: 'Params', params: { param: 'value' } });
+	});
+});
+
+describe('optional params', () => {
+	test('should handle navigation with optional params in path', async () => {
+		await Router.navigate('/optional-params/value');
+
+		check({ path: '/optional-params/value', component: 'OptionalParams', params: { param: 'value' } });
+	});
+
+	test('should handle navigation with optional params in options', async () => {
+		await Router.navigate('/optional-params/:param', { params: { param: 'value' } });
+
+		check({ path: '/optional-params/value', component: 'OptionalParams', params: { param: 'value' } });
+	});
+
+	test('should handle navigation with no optional params', async () => {
+		await Router.navigate('/optional-params');
+
+		// eslint-disable-next-line no-undefined
+		check({ path: '/optional-params', component: 'OptionalParams', params: { param: undefined } });
+	});
+});
+
+describe('query params', () => {
+	test('should handle navigation with query params in path', async () => {
+		await Router.navigate('/query-params?param=value');
+
+		check({ path: '/query-params', component: 'QueryParams', query: { param: 'value' } });
+	});
+
+	test('should handle navigation with query params in options', async () => {
+		await Router.navigate('/query-params', { query: { param: 'value' } });
+
+		check({ path: '/query-params', component: 'QueryParams', query: { param: 'value' } });
+	});
 });
 
 test('should handle wildcard navigation', async () => {
