@@ -7,7 +7,12 @@ const vitestConfig = {
 	plugins: [ svelteTesting() ],
 	test: {
 		environment: 'jsdom',
-		onConsoleLog: (log) => !log.includes('Not implemented: navigation to another Document')
+		onConsoleLog: (log) => !log.includes('Not implemented: navigation to another Document'),
+		coverage: {
+			enabled: true,
+			include: 'src/**/*.js',
+			reporter: 'text'
+		}
 	}
 };
 
