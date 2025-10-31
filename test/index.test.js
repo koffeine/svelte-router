@@ -1,16 +1,6 @@
 import { describe, test, expect } from 'vitest';
-import { init, navigate, route } from '../src/index.js';
-
-/**
- * @param {string} name
- * @returns {() => Promise<{ default: import('svelte').Component }>}
- */
-// @ts-expect-error: Mock component
-const mock = (name) => () => ({ default: name });
-
-/** @param {{ path: string, component: string, params?: { [key: string]: string | undefined }, query?: { [key: string]: string | undefined } }} expected */
-const check = (expected) => expect(route).toStrictEqual({ params: {}, query: {}, ...expected });
-
+import { check, mock } from './utils.js';
+import { init, navigate } from '../src/index.js';
 
 await init(
 	[
