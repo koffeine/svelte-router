@@ -13,15 +13,20 @@ const mock = (name) => () => ({ default: name });
 const check = (expected) => assert.deepEqual(route, { params: {}, query: {}, ...expected });
 
 
-await init([
-	{ path: '/', component: mock('Index') },
-	{ path: '/redirect', redirect: '/redirected' },
-	{ path: '/redirected', component: mock('Redirected') },
-	{ path: '/params/:param', component: mock('Params') },
-	{ path: '/optional-params/:param?', component: mock('OptionalParams') },
-	{ path: '/query-params', component: mock('QueryParams') },
-	{ path: '/wildcard/*', component: mock('Wildcard') }
-]);
+await init(
+	[
+		{ path: '/', component: mock('Index') },
+		{ path: '/redirect', redirect: '/redirected' },
+		{ path: '/redirected', component: mock('Redirected') },
+		{ path: '/params/:param', component: mock('Params') },
+		{ path: '/optional-params/:param?', component: mock('OptionalParams') },
+		{ path: '/query-params', component: mock('QueryParams') },
+		{ path: '/wildcard/*', component: mock('Wildcard') }
+	],
+	{
+		baseUrl: '/'
+	}
+);
 
 
 test('should handle initial navigation', () => {
