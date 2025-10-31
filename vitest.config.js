@@ -7,7 +7,12 @@ const vitestConfig = {
 	plugins: [ svelteTesting() ],
 	test: {
 		reporters: 'tree',
-		environment: 'happy-dom'
+		environment: 'happy-dom',
+		coverage: {
+			enabled: true,
+			include: [ 'src/**/*.js' ],
+			reporter: 'text'
+		}
 	}
 };
 
