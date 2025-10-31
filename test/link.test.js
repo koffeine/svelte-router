@@ -4,6 +4,7 @@ import userEvent from '@testing-library/user-event';
 import { check, mock } from './utils.js';
 import Link from './Link.svelte';
 import { init, navigate } from '../src/index.js';
+import './vitest-jsdom-fix.js';
 
 await init([
 	{ path: '/', component: mock('Index') },
