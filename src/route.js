@@ -40,19 +40,15 @@ export class Route {
 		return (await this.#component()).default;
 	}
 
-	/** @param {string} path */
+	/**
+	 * @param {string} path
+	 * @returns {{ [key: string]: string | undefined }}
+	 */
 	getParams(path) {
 		// @ts-expect-error: Called when matches() returns true
 		const matches = this.#pattern.exec(path).slice(1);
 
-		/** @type {{ [key: string]: string | undefined }} */
-		const params = {};
-
-		for (let i = 0; i < this.#keys.length; i++) {
-			params[this.#keys[i]] = matches[i];
-		}
-
-		return params;
+		return this.#keys.reduce((params, key, i) => ({ ...params, [key]: matches[i] }), {});
 	}
 
 }
