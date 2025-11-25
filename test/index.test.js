@@ -1,5 +1,4 @@
-import { describe, test } from 'vitest';
-import assert from 'assert/strict';
+import { describe, expect, test } from 'vitest';
 import { check, mock } from './utils.js';
 import { init, navigate } from '../src/index.js';
 
@@ -91,5 +90,5 @@ test('should handle wildcard navigation', async () => {
 });
 
 test('should throw error on unknown path', async () => {
-	await assert.rejects(navigate('/not-found'));
+	await expect(navigate('/not-found')).rejects.toThrowError();
 });

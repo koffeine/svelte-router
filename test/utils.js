@@ -1,4 +1,4 @@
-import assert from 'assert/strict';
+import { expect } from 'vitest';
 import { route } from '../src/index.js';
 
 /**
@@ -9,4 +9,4 @@ import { route } from '../src/index.js';
 export const mock = (name) => () => ({ default: name });
 
 /** @param {{ path: string, component: string, params?: { [key: string]: string | undefined }, query?: { [key: string]: string | undefined } }} expected */
-export const check = (expected) => assert.deepEqual(route, { params: {}, query: {}, ...expected });
+export const check = (expected) => expect(route).toStrictEqual({ params: {}, query: {}, ...expected });
