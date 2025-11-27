@@ -6,8 +6,7 @@ import viteConfig from './vite.config.js';
 const vitestConfig = {
 	plugins: [ svelteTesting() ],
 	test: {
-		environment: 'jsdom',
-		onConsoleLog: (log) => !log.includes('Not implemented: navigation to another Document'),
+		environment: 'happy-dom',
 		coverage: {
 			enabled: true,
 			include: 'src/**/*.js',
