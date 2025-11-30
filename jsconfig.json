@@ -1,16 +1,14 @@
 {
-	"include": [
-		"src/**/*",
-		"test/**/*",
-		"demo/**/*"
+	"exclude": [
+		"dist"
 	],
 	"compilerOptions": {
 		// Type Checking
 		"strict": true,
 
 		// Modules
-		"module": "preserve",
-		"moduleResolution": "bundler", // svelte-check doesn't set default based on module
+		"module": "esnext",
+		"moduleResolution": "bundler",
 
 		// JavaScript Support
 		"checkJs": true,

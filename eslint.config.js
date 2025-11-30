@@ -5,9 +5,19 @@ import typescriptParser from '@typescript-eslint/parser';
 import typescriptPlugin from '@typescript-eslint/eslint-plugin';
 
 /** @type {import('eslint').Linter.Config[]} */
+// @ts-expect-error typescriptPlugin
 export default [
 	...koffeine,
 	...koffeineSvelte,
+	{
+		ignores: [ 'dist' ],
+	},
+	{
+		files: [ '*', 'test/**/*' ],
+		languageOptions: {
+			globals: globals.node
+		}
+	},
 	{
 		files: [ 'src/**/*', 'demo/**/*' ],
 		languageOptions: {

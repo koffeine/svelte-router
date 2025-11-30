@@ -7,15 +7,10 @@
 		"router"
 	],
 	"homepage": "https://github.com/koffeine/svelte-router",
-	"bugs": {
-		"url": "https://github.com/koffeine/svelte-router/issues"
-	},
+	"bugs": "https://github.com/koffeine/svelte-router/issues",
 	"license": "MIT",
 	"author": "Kornél Horváth <kornel.horvath@me.com>",
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/koffeine/svelte-router.git"
-	},
+	"repository": "koffeine/svelte-router",
 	"files": [
 		"src"
 	],
@@ -44,7 +39,6 @@
 		"@types/jsdom-global": "^3",
 		"@types/node": "^22",
 		"@typescript-eslint/eslint-plugin": "^8",
-		"@typescript-eslint/parser": "^8",
 		"eslint": "9.35.0",
 		"globals": "^16",
 		"jsdom-global": "^3",
@@ -55,5 +49,11 @@
 	},
 	"peerDependencies": {
 		"svelte": "^5.29.0"
+	},
+	"devEngines": {
+		"runtime": {
+			"name": "node",
+			"version": "22"
+		}
 	}
 }
