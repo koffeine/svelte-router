@@ -25,7 +25,8 @@
 	},
 	"type": "module",
 	"scripts": {
-		"test": "eslint && svelte-check && vitest run",
+		"postinstall": "playwright install --with-deps chromium-headless-shell webkit firefox",
+		"test": "eslint && svelte-check && vitest run --project firefox --project webkit && vitest run --project chromium --coverage",
 		"dev": "vite",
 		"build": "vite build",
 		"preview": "vite preview",
@@ -39,19 +40,19 @@
 		"@koffeine/eslint-config-svelte": "^2.4.0",
 		"@koffeine/kss": "^4.4.2",
 		"@sveltejs/vite-plugin-svelte": "^6.2.4",
-		"@testing-library/svelte": "^5.3.1",
-		"@testing-library/user-event": "^14.6.1",
 		"@typescript-eslint/eslint-plugin": "^8.58.2",
 		"@typescript-eslint/parser": "^8.58.2",
+		"@vitest/browser-playwright": "^4.1.4",
 		"@vitest/coverage-v8": "^4.1.4",
 		"eslint": "^10.2.0",
 		"globals": "^17.5.0",
-		"happy-dom": "^20.9.0",
+		"playwright": "^1.59.1",
 		"svelte": "^5.55.4",
 		"svelte-check": "^4.4.6",
 		"typescript-svelte-plugin": "^0.3.51",
 		"vite": "^7.3.2",
-		"vitest": "^4.1.4"
+		"vitest": "^4.1.4",
+		"vitest-browser-svelte": "^2.1.1"
 	},
 	"peerDependencies": {
 		"svelte": "^5.29.0"

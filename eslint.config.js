@@ -13,13 +13,13 @@ export default [
 		ignores: [ 'dist' ],
 	},
 	{
-		files: [ '*', 'test/**/*' ],
+		files: [ '*' ],
 		languageOptions: {
 			globals: globals.node
 		}
 	},
 	{
-		files: [ 'src/**/*', 'demo/**/*' ],
+		files: [ 'src/**/*', 'test/**/*', 'demo/**/*' ],
 		languageOptions: {
 			globals: globals.browser
 		}

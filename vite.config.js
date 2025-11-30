@@ -1,14 +1,11 @@
 import { svelte } from '@sveltejs/vite-plugin-svelte';
-import { svelteTesting } from '@testing-library/svelte/vite';
+import { playwright } from '@vitest/browser-playwright';
 
 /** @type {import('vitest/config').ViteUserConfigExport} */
 export default ({ mode }) => ({
 	base: mode === 'production' ? '/svelte-router/' : '/',
 
-	plugins: [
-		svelte(),
-		mode === 'test' && svelteTesting()
-	],
+	plugins: [ svelte() ],
 
 	server: { open: true },
 
@@ -16,9 +13,18 @@ export default ({ mode }) => ({
 
 	test: {
 		reporters: 'tree',
-		environment: 'happy-dom',
-		coverage: {
+		browser: {
 			enabled: true,
+			provider: playwright(),
+			headless: true,
+			screenshotFailures: false,
+			instances: [
+				{ browser: 'chromium' },
+				{ browser: 'webkit' },
+				{ browser: 'firefox' }
+			]
+		},
+		coverage: {
 			include: [ 'src/**/*.js' ],
 			reporter: 'text'
 		}

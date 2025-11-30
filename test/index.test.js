@@ -1,6 +1,6 @@
 import { describe, test, expect } from 'vitest';
 import { check, mock } from './utils.js';
-import { init, navigate } from '../src/index.js';
+import { init, navigate, route } from '../src/index.js';
 
 await init(
 	[
@@ -19,7 +19,7 @@ await init(
 
 
 test('should handle initial navigation', () => {
-	check({ path: '/', component: 'Index' });
+	check({ path: '/', component: 'Index', query: route.query });
 });
 
 test('should handle navigation with redirect', async () => {
