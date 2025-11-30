@@ -18,7 +18,9 @@ await init(
 );
 
 
-test('should handle initial navigation', () => {
+test('should handle initial navigation', async () => {
+	await navigate('/');
+
 	check({ path: '/', component: 'Index' });
 });
 

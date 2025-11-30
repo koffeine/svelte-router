@@ -1,6 +1,6 @@
 import { beforeEach, test } from 'vitest';
-import { render, screen } from '@testing-library/svelte';
-import userEvent from '@testing-library/user-event';
+import { page, userEvent } from 'vitest/browser';
+import { render } from 'vitest-browser-svelte';
 import { check, mock } from './utils.js';
 import Link from './Link.svelte';
 import { init, navigate } from '../src/index.js';
@@ -11,39 +11,34 @@ await init([
 ]);
 
 
-/** @type {import('@testing-library/user-event').UserEvent} */
-let user;
-
 beforeEach(async () => {
 	await navigate('/');
 
 	render(Link);
-
-	user = userEvent.setup();
 });
 
 test('should navigate on left-click', async () => {
-	await user.click(screen.getByRole('link'));
+	await userEvent.click(page.getByRole('link'));
 
 	check({ path: '/page', component: 'Page' });
 });
 
 test('should not navigate on left-click when Control is pressed', async () => {
-	await user.keyboard('{Control>}');
-	await user.click(screen.getByRole('link'));
+	await userEvent.keyboard('{Control>}');
+	await userEvent.click(page.getByRole('link'));
 
 	check({ path: '/', component: 'Index' });
 });
 
 test('should not navigate on left-click when Meta is pressed', async () => {
-	await user.keyboard('{Meta>}');
-	await user.click(screen.getByRole('link'));
+	await userEvent.keyboard('{Meta>}');
+	await userEvent.click(page.getByRole('link'));
 
 	check({ path: '/', component: 'Index' });
 });
 
 test('should not navigate on right-click', async () => {
-	await user.pointer({ target: screen.getByRole('link'), keys: '[MouseRight]' });
+	await userEvent.click(page.getByRole('link'), { button: 'right' });
 
 	check({ path: '/', component: 'Index' });
 });
