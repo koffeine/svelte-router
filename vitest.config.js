@@ -1,12 +1,17 @@
 import { mergeConfig } from 'vite';
-import { svelteTesting } from '@testing-library/svelte/vite';
+import { playwright } from '@vitest/browser-playwright';
 import viteConfig from './vite.config.js';
 
 /** @type {import('vitest/config').ViteUserConfigExport} */
 const vitestConfig = {
-	plugins: [ svelteTesting() ],
 	test: {
-		environment: 'happy-dom',
+		browser: {
+			enabled: true,
+			provider: playwright(),
+			headless: true,
+			screenshotFailures: false,
+			instances: [ { browser: 'chromium' } ]
+		},
 		reporters: 'tree',
 		coverage: {
 			enabled: true,
