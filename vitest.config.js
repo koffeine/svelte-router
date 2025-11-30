@@ -10,11 +10,16 @@ const vitestConfig = {
 			provider: playwright(),
 			headless: true,
 			screenshotFailures: false,
-			instances: [ { browser: 'chromium' } ]
+			instances: [
+				{ browser: 'chromium' },
+				{ browser: 'firefox' },
+				{ browser: 'webkit' }
+			]
 		},
 		reporters: 'tree',
 		coverage: {
 			enabled: true,
+			provider: 'istanbul',
 			include: 'src/**/*.js',
 			reporter: 'text'
 		}

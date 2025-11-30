@@ -27,7 +27,7 @@
 	},
 	"type": "module",
 	"scripts": {
-		"postinstall": "playwright install --with-deps chromium-headless-shell",
+		"postinstall": "playwright install --with-deps",
 		"test": "eslint && svelte-check --tsconfig jsconfig.json && vitest run",
 		"dev": "vite",
 		"build": "vite build",
@@ -45,8 +45,8 @@
 		"@types/node": "^24",
 		"@typescript-eslint/eslint-plugin": "^8",
 		"@typescript-eslint/parser": "^8",
-		"@vitest/coverage-v8": "^4",
 		"@vitest/browser-playwright": "^4",
+		"@vitest/coverage-istanbul": "^4",
 		"eslint": "9.39.1",
 		"globals": "^16",
 		"playwright": "^1",
