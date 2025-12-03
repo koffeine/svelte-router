@@ -29,23 +29,23 @@
 		"prepublishOnly": "npm test"
 	},
 	"dependencies": {
-		"regexparam": "^3"
+		"regexparam": "3.0.0"
 	},
 	"devDependencies": {
-		"@koffeine/eslint-config": "46.0.1",
-		"@koffeine/eslint-config-svelte": "1.4.0",
-		"@koffeine/kss": "4.0.0",
+		"@koffeine/eslint-config": "^47",
+		"@koffeine/eslint-config-svelte": "^1",
+		"@koffeine/kss": "^4",
 		"@sveltejs/vite-plugin-svelte": "^6",
 		"@types/jsdom-global": "^3",
-		"@types/node": "^22",
+		"@types/node": "^24",
 		"@typescript-eslint/eslint-plugin": "^8",
-		"eslint": "9.35.0",
+		"eslint": "^9",
 		"globals": "^16",
 		"jsdom-global": "^3",
 		"svelte": "^5.29.0",
 		"svelte-check": "^4",
 		"vite": "^7",
-		"vitest": "^3"
+		"vitest": "^4"
 	},
 	"peerDependencies": {
 		"svelte": "^5.29.0"
@@ -53,7 +53,7 @@
 	"devEngines": {
 		"runtime": {
 			"name": "node",
-			"version": "22"
+			"version": "24"
 		}
 	}
 }
