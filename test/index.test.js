@@ -1,4 +1,3 @@
-import jsdomGlobal from 'jsdom-global';
 import { describe, test } from 'vitest';
 import assert from 'assert/strict';
 import * as Router from '../src/index.js';
@@ -13,8 +12,6 @@ const mockComponent = (name) => () => ({ default: name });
 /** @param {{ path: string, component: string, params?: { [key: string]: string | undefined }, query?: { [key: string]: string | undefined } }} expected */
 const check = (expected) => assert.deepEqual(Router.route, { params: {}, query: {}, ...expected });
 
-
-jsdomGlobal('', { url: 'http://localhost/' });
 
 await Router.init([
 	{ path: '/', component: mockComponent('Index') },

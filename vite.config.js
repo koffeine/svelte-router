@@ -1,6 +1,6 @@
 import { svelte } from '@sveltejs/vite-plugin-svelte';
 
-/** @type {import('vite').UserConfigExport} */
+/** @type {import('vite').UserConfigFn} */
 export default ({ mode }) => ({
 	base: mode === 'production' ? '/svelte-router/' : '/',
 
