@@ -36,7 +36,6 @@
 		"@koffeine/eslint-config-svelte": "^1",
 		"@koffeine/kss": "^4",
 		"@sveltejs/vite-plugin-svelte": "^6",
-		"@types/node": "^24",
 		"@typescript-eslint/eslint-plugin": "^8",
 		"eslint": "^9",
 		"globals": "^16",

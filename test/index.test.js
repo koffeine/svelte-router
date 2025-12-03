@@ -1,5 +1,4 @@
-import { describe, test } from 'vitest';
-import assert from 'assert/strict';
+import { describe, test, expect } from 'vitest';
 import * as Router from '../src/index.js';
 
 /**
@@ -10,7 +9,7 @@ import * as Router from '../src/index.js';
 const mockComponent = (name) => () => ({ default: name });
 
 /** @param {{ path: string, component: string, params?: { [key: string]: string | undefined }, query?: { [key: string]: string | undefined } }} expected */
-const check = (expected) => assert.deepEqual(Router.route, { params: {}, query: {}, ...expected });
+const check = (expected) => expect(Router.route).toStrictEqual({ params: {}, query: {}, ...expected });
 
 
 await Router.init([
@@ -96,5 +95,5 @@ test('should handle wildcard navigation', async () => {
 });
 
 test('should throw error on unknown path', async () => {
-	await assert.rejects(Router.navigate('/not-found'));
+	await expect(Router.navigate('/not-found')).rejects.toThrowError();
 });
