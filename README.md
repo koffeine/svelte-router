@@ -17,7 +17,7 @@ npm install @koffeine/svelte-router
 
 ## Usage
 
-[`App.svelte`](https://github.com/koffeine/svelte-router/blob/master/demo/App.svelte):
+[`App.svelte`](https://github.com/koffeine/svelte-router/blob/main/demo/App.svelte):
 
 ```html
 <script>
@@ -64,7 +64,7 @@ init(
 <route.component {...route.params} />
 ```
 
-[`Welcome.svelte`](https://github.com/koffeine/svelte-router/blob/master/demo/Welcome.svelte):
+[`Welcome.svelte`](https://github.com/koffeine/svelte-router/blob/main/demo/Welcome.svelte):
 
 ```html
 <script>
@@ -98,10 +98,4 @@ Numbers:
 
 ## API
 
-[Go to declaration](https://github.com/koffeine/svelte-router/blob/master/src/index.d.ts)
-
-## License
-
-Copyright © Kornél Horváth
-
-Licensed under the [MIT License](https://raw.githubusercontent.com/koffeine/svelte-router/refs/heads/master/LICENSE).
+[Go to declaration](https://github.com/koffeine/svelte-router/blob/main/src/index.d.ts)
