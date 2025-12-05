@@ -10,7 +10,10 @@
 	"bugs": "https://github.com/koffeine/svelte-router/issues",
 	"license": "MIT",
 	"author": "Kornél Horváth <kornel.horvath@me.com>",
-	"repository": "koffeine/svelte-router",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/koffeine/svelte-router.git"
+	},
 	"files": [
 		"src"
 	],
