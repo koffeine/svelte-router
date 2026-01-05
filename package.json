@@ -44,7 +44,7 @@
 		"@typescript-eslint/eslint-plugin": "^8",
 		"@vitest/coverage-v8": "^4",
 		"eslint": "^9",
-		"globals": "^16",
+		"globals": "^17",
 		"happy-dom": "^20",
 		"svelte": "^5.29.0",
 		"svelte-check": "^4",
