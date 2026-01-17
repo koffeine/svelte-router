@@ -79,7 +79,7 @@ const numbers = $derived([ 1, 2, 3 ].sort((a, b) => (a - b) * (route.query.order
 const query = $derived({ order: route.query.order === 'desc' ? 'asc' : 'desc' });
 </script>
 
-<h1>Welcome, {name[0].toUpperCase() + name.substring(1)}!</h1>
+<h1>Welcome, {name[0].toUpperCase() + name.slice(1)}!</h1>
 
 Numbers:
 

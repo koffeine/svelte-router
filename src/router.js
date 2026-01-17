@@ -3,60 +3,53 @@ import { inject } from 'regexparam';
 import { Routes } from './routes.js';
 import { setRoute } from './route.svelte.js';
 
-class Router {
+/** @type {Routes} */
+let routes;
 
-	/** @type {Routes} */
-	static #routes;
+/** @type {string} */
+let baseUrl;
 
-	/** @type {string} */
-	static #baseUrl;
+/** @type {typeof import('./index.d.ts').init} */
+export const init = async (newRoutes, { baseUrl: newBaseUrl = '' } = {}) => {
+	routes = new Routes(newRoutes);
+	baseUrl = newBaseUrl.endsWith('/') ? newBaseUrl.slice(0, -1) : newBaseUrl;
 
-	/** @type {typeof import('./index.d.ts').init} */
-	static async init(routes, { baseUrl = '' } = {}) {
-		Router.#routes = new Routes(routes);
-		Router.#baseUrl = baseUrl.endsWith('/') ? baseUrl.substring(0, baseUrl.length - 1) : baseUrl;
+	on(window, 'popstate', notify); // eslint-disable-line no-use-before-define
+	await notify(); // eslint-disable-line no-use-before-define
+};
 
-		on(window, 'popstate', Router.#notify);
-		await Router.#notify();
+/** @type {typeof import('./index.d.ts').navigate} */
+export const navigate = async (path, { replace = false, params, query } = {}) => {
+	const [ pathPart, queryPart ] = path.split('?');
+
+	path = baseUrl + pathPart;
+
+	if (params) {
+		path = inject(path, params);
 	}
 
-	/** @type {typeof import('./index.d.ts').navigate} */
-	static async navigate(path, { replace = false, params, query } = {}) {
-		const [ pathPart, queryPart ] = path.split('?');
-
-		path = Router.#baseUrl + pathPart;
-
-		if (params) {
-			path = inject(path, params);
-		}
-
-		if (queryPart || query) {
-			path += `?${new URLSearchParams({ ...Object.fromEntries(new URLSearchParams(queryPart)), ...query })}`;
-		}
-
-		if (path !== location.pathname + location.search) {
-			history[`${replace ? 'replace' : 'push'}State`](null, '', path);
-			await Router.#notify();
-		}
+	if (queryPart || query) {
+		path += `?${new URLSearchParams({ ...Object.fromEntries(new URLSearchParams(queryPart)), ...query })}`;
 	}
 
-	static async #notify() {
-		const path = location.pathname.substring(Router.#baseUrl.length);
-		const route = Router.#routes.find(path);
-
-		if (route.isRedirect()) {
-			await Router.navigate(route.getRedirect(), { replace: true });
-		} else {
-			setRoute({
-				path,
-				component: await route.getComponent(),
-				params: route.getParams(path),
-				query: Object.fromEntries(new URLSearchParams(location.search))
-			});
-		}
+	if (path !== location.pathname + location.search) {
+		history[`${replace ? 'replace' : 'push'}State`](null, '', path);
+		await notify(); // eslint-disable-line no-use-before-define
 	}
+};
 
-}
+const notify = async () => {
+	const path = location.pathname.slice(baseUrl.length);
+	const route = routes.find(path);
 
-export const init = Router.init;
-export const navigate = Router.navigate;
+	if (route.isRedirect()) {
+		await navigate(route.getRedirect(), { replace: true });
+	} else {
+		setRoute({
+			path,
+			component: await route.getComponent(),
+			params: route.getParams(path),
+			query: Object.fromEntries(new URLSearchParams(location.search))
+		});
+	}
+};
