@@ -1,6 +1,6 @@
 import { beforeEach, test } from 'vitest';
 import { render, screen } from '@testing-library/svelte';
-import userEvent from '@testing-library/user-event';
+import { userEvent } from '@testing-library/user-event';
 import { check, mock } from './utils.js';
 import Link from './Link.svelte';
 import { init, navigate } from '../src/index.js';

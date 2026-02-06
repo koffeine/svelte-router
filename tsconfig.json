@@ -7,11 +7,20 @@
 		"strict": true,
 
 		// Modules
-		"module": "esnext",
-		"moduleResolution": "bundler",
+		"module": "nodenext",
+		"moduleResolution": "nodenext",
+		"noUncheckedSideEffectImports": true,
+		"types": [],
+
+		// Emit
+		"noEmit": true,
 
 		// JavaScript Support
+		"allowJs": true,
 		"checkJs": true,
+
+		// Editor Support
+		"plugins": [ { "name": "typescript-svelte-plugin" } ],
 
 		// Language and Environment
 		"target": "esnext",
