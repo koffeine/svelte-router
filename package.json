@@ -35,24 +35,29 @@
 		"regexparam": "3.0.0"
 	},
 	"devDependencies": {
-		"@koffeine/eslint-config": "^47",
-		"@koffeine/eslint-config-svelte": "^1",
-		"@koffeine/kss": "^4",
-		"@sveltejs/vite-plugin-svelte": "^6",
-		"@testing-library/svelte": "^5",
-		"@testing-library/user-event": "^14",
-		"@typescript-eslint/eslint-plugin": "^8",
-		"@vitest/coverage-v8": "^4",
-		"eslint": "^9",
-		"globals": "^17",
-		"happy-dom": "^20",
-		"svelte": "^5.29.0",
-		"svelte-check": "^4",
-		"vite": "^7",
-		"vitest": "^4"
+		"@koffeine/eslint-config": "^48.1.0",
+		"@koffeine/eslint-config-svelte": "^2.0.0",
+		"@koffeine/kss": "^4.4.2",
+		"@sveltejs/vite-plugin-svelte": "^6.2.4",
+		"@testing-library/svelte": "^5.3.1",
+		"@testing-library/user-event": "^14.6.1",
+		"@typescript-eslint/eslint-plugin": "^8.56.0",
+		"@vitest/coverage-v8": "^4.0.18",
+		"eslint": "^10.0.1",
+		"globals": "^17.3.0",
+		"happy-dom": "^20.6.3",
+		"svelte": "^5.53.0",
+		"svelte-check": "^4.4.2",
+		"vite": "^7.3.1",
+		"vitest": "^4.0.18"
 	},
 	"peerDependencies": {
 		"svelte": "^5.29.0"
+	},
+	"overrides": {
+		"svelte-eslint-parser": {
+			"eslint-scope": "^9.1.1"
+		}
 	},
 	"devEngines": {
 		"runtime": {
