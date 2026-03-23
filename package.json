@@ -35,26 +35,31 @@
 		"regexparam": "3.0.0"
 	},
 	"devDependencies": {
-		"@koffeine/eslint-config": "^47.7.0",
-		"@koffeine/eslint-config-svelte": "^1.10.0",
+		"@koffeine/eslint-config": "^48.6.0",
+		"@koffeine/eslint-config-svelte": "^2.4.0",
 		"@koffeine/kss": "^4.4.2",
 		"@sveltejs/vite-plugin-svelte": "^6.2.4",
 		"@testing-library/svelte": "^5.3.1",
 		"@testing-library/user-event": "^14.6.1",
-		"@typescript-eslint/eslint-plugin": "^8.54.0",
-		"@typescript-eslint/parser": "^8.54.0",
-		"@vitest/coverage-v8": "^4.0.18",
-		"eslint": "^9.39.2",
-		"globals": "^17.3.0",
-		"happy-dom": "^20.5.0",
-		"svelte": "^5.49.2",
-		"svelte-check": "^4.3.6",
+		"@typescript-eslint/eslint-plugin": "^8.58.2",
+		"@typescript-eslint/parser": "^8.58.2",
+		"@vitest/coverage-v8": "^4.1.4",
+		"eslint": "^10.2.0",
+		"globals": "^17.5.0",
+		"happy-dom": "^20.9.0",
+		"svelte": "^5.55.4",
+		"svelte-check": "^4.4.6",
 		"typescript-svelte-plugin": "^0.3.51",
-		"vite": "^7.3.1",
-		"vitest": "^4.0.18"
+		"vite": "^7.3.2",
+		"vitest": "^4.1.4"
 	},
 	"peerDependencies": {
 		"svelte": "^5.29.0"
+	},
+	"overrides": {
+		"svelte2tsx": {
+			"typescript": "^6.0.3"
+		}
 	},
 	"devEngines": {
 		"runtime": {

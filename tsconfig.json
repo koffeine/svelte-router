@@ -3,13 +3,9 @@
 		"dist"
 	],
 	"compilerOptions": {
-		// Type Checking
-		"strict": true,
-
 		// Modules
 		"module": "nodenext",
 		"moduleResolution": "nodenext",
-		"noUncheckedSideEffectImports": true,
 		"types": [],
 
 		// Emit
