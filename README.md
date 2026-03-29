@@ -98,4 +98,4 @@ Numbers:
 
 ## API
 
-[Go to declaration](https://github.com/koffeine/svelte-router/blob/main/src/index.d.ts)
+[Go to declaration](https://github.com/koffeine/svelte-router/blob/main/index.d.ts)

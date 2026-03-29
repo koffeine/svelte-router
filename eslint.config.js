@@ -14,12 +14,13 @@ export default [
 	},
 	{
 		files: [ '*' ],
+		ignores: [ 'index.d.ts' ],
 		languageOptions: {
 			globals: globals.node
 		}
 	},
 	{
-		files: [ 'src/**/*', 'test/**/*', 'demo/**/*' ],
+		files: [ 'src/**/*', 'test/**/*', 'demo/**/*', 'index.d.ts' ],
 		languageOptions: {
 			globals: globals.browser
 		}
