@@ -9,8 +9,8 @@ export type Route = {
 	/** Path to redirect to */
 	redirect: string,
 
-	/** Should be `undefined` when `redirect` is set */
-	component?: undefined
+	/** Shouldn't be set when `redirect` is set */
+	component?: never
 
 } | {
 
@@ -20,8 +20,8 @@ export type Route = {
 	/** Dynamic import to a component */
 	component: () => Promise<{ default: Component<any> }>,
 
-	/** Should be `undefined` when `component` is set */
-	redirect?: undefined
+	/** Shouldn't be set when `component` is set */
+	redirect?: never
 
 };
 

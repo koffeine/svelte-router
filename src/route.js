@@ -10,7 +10,7 @@ export class Route {
 
 	#component;
 
-	/** @param {{ path: string, redirect: string, component?: undefined } | { path: string, component: () => Promise<{ default: import('svelte').Component<any> }>, redirect?: undefined }} route */
+	/** @param {{ path: string, redirect: string, component?: never } | { path: string, component: () => Promise<{ default: import('svelte').Component<any> }>, redirect?: never }} route */
 	constructor({ path, redirect, component }) {
 		const { pattern, keys } = parse(path);
 
