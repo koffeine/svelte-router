@@ -5,7 +5,7 @@ import { navigate } from './router.js';
  * @param {Parameters<typeof import('./router.js').navigate>[1]} [options]
  * @returns {import('svelte/attachments').Attachment<HTMLAnchorElement>}
  */
-export const link = (options = {}) =>
+export const link = (options) =>
 	(node) =>
 		on(node, 'click', (event) => {
 			if (event.ctrlKey || event.metaKey || event.button !== 0) {
