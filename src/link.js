@@ -1,7 +1,10 @@
 import { on } from 'svelte/events';
 import { navigate } from './router.js';
 
-/** @type {typeof import('./index.d.ts').link} */
+/**
+ * @param {Parameters<typeof import('./router.js').navigate>[1]} [options]
+ * @returns {import('svelte/attachments').Attachment<HTMLAnchorElement>}
+ */
 export const link = (options = {}) =>
 	(node) =>
 		on(node, 'click', (event) => {

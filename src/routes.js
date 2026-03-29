@@ -4,7 +4,7 @@ export class Routes {
 
 	#routes;
 
-	/** @param {import('./index.d.ts').Route[]} routes */
+	/** @param {ConstructorParameters<typeof import('./route.js').Route>[0][]} routes */
 	constructor(routes) {
 		this.#routes = routes.map((route) => new Route(route));
 	}

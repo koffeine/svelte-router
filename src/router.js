@@ -9,7 +9,10 @@ let routes;
 /** @type {string} */
 let baseUrl;
 
-/** @type {typeof import('./index.d.ts').init} */
+/**
+ * @param {ConstructorParameters<typeof import('./routes.js').Routes>[0]} newRoutes
+ * @param {{ baseUrl?: string }} [options]
+ */
 export const init = async (newRoutes, { baseUrl: newBaseUrl = '' } = {}) => {
 	routes = new Routes(newRoutes);
 	baseUrl = newBaseUrl.endsWith('/') ? newBaseUrl.slice(0, -1) : newBaseUrl;
@@ -18,7 +21,10 @@ export const init = async (newRoutes, { baseUrl: newBaseUrl = '' } = {}) => {
 	await notify(); // eslint-disable-line no-use-before-define
 };
 
-/** @type {typeof import('./index.d.ts').navigate} */
+/**
+ * @param {string} path
+ * @param {{ replace?: boolean, params?: { [key: string]: string }, query?: { [key: string]: string } }} [options]
+ */
 export const navigate = async (path, { replace = false, params, query } = {}) => {
 	const [ pathPart, queryPart ] = path.split('?');
 

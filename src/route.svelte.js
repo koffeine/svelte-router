@@ -1,7 +1,9 @@
-/** @type {typeof import('./index.d.ts').route} */
+/** @typedef {{ path: string, component: import('svelte').Component | null, params: { [key: string]: string | undefined }, query: { [key: string]: string | undefined } }} State */
+
+/** @type {State} */
 let state = $state({ path: '', component: null, params: {}, query: {} });
 
-/** @type {typeof import('./index.d.ts').route} */
+/** @type {State} */
 export const route = {
 	get path() {
 		return state.path;
@@ -20,5 +22,5 @@ export const route = {
 	}
 };
 
-/** @param {typeof import('./index.d.ts').route} newRoute */
+/** @param {State} newRoute */
 export const setRoute = (newRoute) => state = newRoute;
