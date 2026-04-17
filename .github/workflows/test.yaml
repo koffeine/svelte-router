@@ -10,4 +10,5 @@ jobs:
             with:
                 node-version: 24
           - run: npm i
+          - run: npm run init
           - run: npm test

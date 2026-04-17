@@ -26,7 +26,7 @@
 	},
 	"type": "module",
 	"scripts": {
-		"postinstall": "playwright install --with-deps chromium-headless-shell webkit firefox",
+		"init": "playwright install --with-deps chromium-headless-shell webkit firefox",
 		"test": "eslint && svelte-check && vitest run --project firefox --project webkit && vitest run --project chromium --coverage",
 		"dev": "vite",
 		"build": "vite build",
