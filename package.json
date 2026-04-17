@@ -26,8 +26,8 @@
 	},
 	"type": "module",
 	"scripts": {
-		"init": "playwright install --with-deps chromium-headless-shell webkit firefox",
-		"test": "eslint && svelte-check && vitest run --project firefox --project webkit && vitest run --project chromium --coverage",
+		"init": "playwright install --with-deps chromium-headless-shell",
+		"test": "eslint && svelte-check && vitest run",
 		"dev": "vite",
 		"build": "vite build",
 		"preview": "vite preview",

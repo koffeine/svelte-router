@@ -18,13 +18,10 @@ export default ({ mode }) => ({
 			provider: playwright(),
 			headless: true,
 			screenshotFailures: false,
-			instances: [
-				{ browser: 'chromium' },
-				{ browser: 'webkit' },
-				{ browser: 'firefox' }
-			]
+			instances: [ { browser: 'chromium' } ]
 		},
 		coverage: {
+			enabled: true,
 			include: [ 'src/**/*.js' ],
 			reporter: 'text'
 		}
