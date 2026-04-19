@@ -45,7 +45,7 @@ export const navigate = async (path, { replace = false, params, query } = {}) =>
 };
 
 const notify = async () => {
-	const path = location.pathname.slice(baseUrl.length);
+	const path = location.pathname.slice(baseUrl.length) || '/';
 	const route = routes.find(path);
 
 	if (route.isRedirect()) {
