@@ -1,6 +1,10 @@
 import { describe, test, expect } from 'vitest';
 import { check, mock } from './utils.js';
-import { init, navigate, route } from '../src/index.js';
+import { init, navigate } from '../src/index.js';
+
+const baseUrl = '/';
+
+history.replaceState(null, '', baseUrl); // Playwright fix
 
 await init(
 	[
@@ -12,14 +16,12 @@ await init(
 		{ path: '/query-params', component: mock('QueryParams') },
 		{ path: '/wildcard/*', component: mock('Wildcard') }
 	],
-	{
-		baseUrl: '/'
-	}
+	{ baseUrl }
 );
 
 
 test('should handle initial navigation', () => {
-	check({ path: '/', component: 'Index', query: route.query });
+	check({ path: '/', component: 'Index' });
 });
 
 test('should handle navigation with redirect', async () => {
