@@ -1,4 +1,3 @@
-import { on } from 'svelte/events';
 import { inject } from 'regexparam';
 import { Routes } from './routes.js';
 import { setRoute } from './route.svelte.js';
@@ -17,7 +16,7 @@ export const init = async (newRoutes, { baseUrl: newBaseUrl = '' } = {}) => {
 	routes = new Routes(newRoutes);
 	baseUrl = newBaseUrl.endsWith('/') ? newBaseUrl.slice(0, -1) : newBaseUrl;
 
-	on(window, 'popstate', notify); // eslint-disable-line no-use-before-define
+	window.addEventListener('popstate', notify); // eslint-disable-line no-use-before-define
 	await notify(); // eslint-disable-line no-use-before-define
 };
 

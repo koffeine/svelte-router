@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Changed init from using on (svelte/events) to addEventListener
+
 ### Fixed
 
 - Fixed path not defaulting to `/` when using custom base url
