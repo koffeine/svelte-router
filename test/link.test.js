@@ -37,6 +37,13 @@ test('should not navigate on left-click when Meta is pressed', async () => {
 	check({ path: '/', component: 'Index' });
 });
 
+test('should not navigate on left-click when Shift is pressed', async () => {
+	await userEvent.keyboard('{Shift>}');
+	await userEvent.click(page.getByRole('link'));
+
+	check({ path: '/', component: 'Index' });
+});
+
 test('should not navigate on right-click', async () => {
 	await userEvent.click(page.getByRole('link'), { button: 'right' });
 

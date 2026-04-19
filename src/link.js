@@ -8,7 +8,7 @@ import { navigate } from './router.js';
 export const link = (options) =>
 	(node) =>
 		on(node, 'click', (event) => {
-			if (event.ctrlKey || event.metaKey || event.button !== 0) {
+			if (event.ctrlKey || event.metaKey || event.shiftKey || event.button !== 0) {
 				return;
 			}
 
