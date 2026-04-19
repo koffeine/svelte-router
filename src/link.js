@@ -2,7 +2,7 @@ import { on } from 'svelte/events';
 import { navigate } from './router.js';
 
 /**
- * @param {Parameters<typeof import('./router.js').navigate>[1]} [options]
+ * @param {{ params?: { [key: string]: string }, query?: { [key: string]: string }, replace?: boolean }} [options]
  * @returns {import('svelte/attachments').Attachment<HTMLAnchorElement>}
  */
 export const link = (options) =>

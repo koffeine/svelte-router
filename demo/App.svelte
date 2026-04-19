@@ -1,5 +1,5 @@
 <script>
-import { init, navigate, route, link } from '@koffeine/svelte-router';
+import { init, link, navigate, route } from '@koffeine/svelte-router';
 
 /** @type {import('@koffeine/svelte-router').Route[]} */
 const routes = [

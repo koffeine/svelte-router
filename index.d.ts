@@ -46,19 +46,27 @@ export const init: (
 
 export type NavigateOptions = {
 
-	/**
-	 * If `true`, `History.replaceState()` will be used, otherwise `History.pushState()`
-	 * @default false
-	 */
-	replace?: boolean,
-
 	/** Params to inject into url */
 	params?: { [key: string]: string },
 
 	/** Query params to add after path */
-	query?: { [key: string]: string }
+	query?: { [key: string]: string },
+
+	/**
+	 * If `true`, `History.replaceState()` will be used, otherwise `History.pushState()`
+	 * @default false
+	 */
+	replace?: boolean
 
 };
+
+/** Attachment factory that can be used on `a` elements to change them from regular links to router links */
+export const link: (
+
+	/** Options */
+	options?: NavigateOptions
+
+) => Attachment<HTMLAnchorElement>;
 
 /** Navigate to a path */
 export const navigate: (
@@ -87,11 +95,3 @@ export const route: {
 	query: { [key: string]: string | undefined }
 
 };
-
-/** Attachment factory that can be used on `a` elements to change them from regular links to router links */
-export const link: (
-
-	/** Options */
-	options?: NavigateOptions
-
-) => Attachment<HTMLAnchorElement>;

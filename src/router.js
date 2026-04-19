@@ -22,9 +22,9 @@ export const init = async (newRoutes, { baseUrl: newBaseUrl = '' } = {}) => {
 
 /**
  * @param {string} path
- * @param {{ replace?: boolean, params?: { [key: string]: string }, query?: { [key: string]: string } }} [options]
+ * @param {{ params?: { [key: string]: string }, query?: { [key: string]: string }, replace?: boolean }} [options]
  */
-export const navigate = async (path, { replace = false, params, query } = {}) => {
+export const navigate = async (path, { params, query, replace = false } = {}) => {
 	const [ pathPart, queryPart ] = path.split('?');
 
 	path = baseUrl + pathPart;

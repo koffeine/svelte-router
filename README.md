@@ -21,7 +21,7 @@ npm install @koffeine/svelte-router
 
 ```html
 <script>
-import { init, navigate, route, link } from '@koffeine/svelte-router';
+import { init, link, navigate, route } from '@koffeine/svelte-router';
 
 /** @type {import('@koffeine/svelte-router').Route[]} */
 const routes = [
@@ -68,7 +68,7 @@ init(
 
 ```html
 <script>
-import { navigate, route, link } from '@koffeine/svelte-router';
+import { link, navigate, route } from '@koffeine/svelte-router';
 
 // Param
 /** @type {{ name: string }} */

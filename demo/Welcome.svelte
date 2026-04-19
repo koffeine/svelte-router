@@ -1,5 +1,5 @@
 <script>
-import { navigate, route, link } from '@koffeine/svelte-router';
+import { link, navigate, route } from '@koffeine/svelte-router';
 
 // Param
 /** @type {{ name: string }} */
