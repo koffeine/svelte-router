@@ -1,7 +1,4 @@
 {
-	"exclude": [
-		"dist"
-	],
 	"compilerOptions": {
 		// Modules
 		"module": "nodenext",
@@ -23,5 +20,9 @@
 
 		// Completeness
 		"skipLibCheck": true
-	}
+	},
+	"exclude": [
+		"dist",
+		"node_modules"
+	],
 }

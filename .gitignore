@@ -1,6 +1,9 @@
 # Sublime Text
 *.sublime-*
 
+# VS Code
+*.code-workspace
+
 # NPM
 node_modules/
 
