@@ -83,15 +83,15 @@ export const navigate: (
 export const route: {
 
 	/** Path of current url */
-	path: string,
+	readonly path: string,
 
 	/** Component corresponding to current url */
-	component: Component | null,
+	readonly component: Component | null,
 
 	/** Params of current url */
-	params: { [key: string]: string | undefined },
+	readonly params: { [key: string]: string | undefined },
 
 	/** Query params of current url */
-	query: { [key: string]: string | undefined }
+	readonly query: { [key: string]: string | undefined }
 
 };

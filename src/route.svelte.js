@@ -3,7 +3,7 @@
 /** @type {State} */
 let state = $state({ path: '', component: null, params: {}, query: {} });
 
-/** @type {State} */
+/** @type {Readonly<State>} */
 export const route = {
 	get path() {
 		return state.path;
