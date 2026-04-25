@@ -48,7 +48,7 @@ export class Route {
 		// @ts-expect-error: Called when matches() returns true
 		const matches = this.#pattern.exec(path).slice(1);
 
-		return this.#keys.reduce((params, key, i) => ({ ...params, [key]: matches[i] }), {});
+		return Object.fromEntries(this.#keys.map((key, i) => [ key, matches[i] ]));
 	}
 
 }

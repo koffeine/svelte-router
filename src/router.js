@@ -17,6 +17,7 @@ export const init = async (newRoutes, { baseUrl: newBaseUrl = '' } = {}) => {
 	baseUrl = newBaseUrl.endsWith('/') ? newBaseUrl.slice(0, -1) : newBaseUrl;
 
 	window.addEventListener('popstate', notify); // eslint-disable-line no-use-before-define
+
 	await notify(); // eslint-disable-line no-use-before-define
 };
 
@@ -38,7 +39,7 @@ export const navigate = async (path, { params, query, replace = false } = {}) =>
 	}
 
 	if (path !== location.pathname + location.search) {
-		history[`${replace ? 'replace' : 'push'}State`](null, '', path);
+		history[replace ? 'replaceState' : 'pushState'](null, '', path);
 		await notify(); // eslint-disable-line no-use-before-define
 	}
 };
