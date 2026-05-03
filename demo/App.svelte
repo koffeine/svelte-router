@@ -3,39 +3,41 @@ import { init, link, navigate, route } from '@koffeine/svelte-router';
 
 /** @type {import('@koffeine/svelte-router').Route[]} */
 const routes = [
-	// Route with component
-	{ path: '/welcome/:name', component: () => import('./Welcome.svelte') },
+	// Parameterized route with component
+	{ path: '/page/:title', component: () => import('./Page.svelte') },
 
-	// Route with redirect
-	{ path: '*', redirect: '/welcome/unknown' }
+	// Fallback route with redirect
+	{ path: '*', redirect: '/page/unknown' }
 ];
 
 // Initialize router
 init(
 	routes,
 	{
-		// Base url, defaults to ''
+		// BaseUrl of the app, defaults to ''
 		baseUrl: import.meta.env.BASE_URL
 	}
 );
 </script>
 
-<!-- API navigation & using route.path -->
+<h1>svelte-router</h1>
+
+<!-- Link navigation -->
 <div>
 	<!-- Without params -->
-	<button type="button" disabled={route.path === '/welcome/john'} onclick={() => navigate('/welcome/john')}>Welcome John</button>
+	<a href="/page/first" {@attach link()} class:active={route.path === '/page/first'}>Page: first</a>
 
 	<!-- With params -->
-	<button type="button" disabled={route.path === '/welcome/jane'} onclick={() => navigate('/welcome/:name', { params: { name: 'jane' } })}>Welcome Jane</button>
+	<a href="/page/:title" {@attach link({ params: { title: 'second' } })} class:active={route.path === '/page/second'}>Page: second</a>
 </div>
 
-<!-- Anchor navigation & using route.path -->
+<!-- API navigation -->
 <div>
 	<!-- Without params -->
-	<a href="/welcome/john" {@attach link()} class:active={route.path === '/welcome/john'}>Welcome John</a>
-	|
+	<button type="button" disabled={route.path === '/page/first'} onclick={() => navigate('/page/first')}>Page: first</button>
+
 	<!-- With params -->
-	<a href="/welcome/:name" {@attach link({ params: { name: 'jane' } })} class:active={route.path === '/welcome/jane'}>Welcome Jane</a>
+	<button type="button" disabled={route.path === '/page/second'} onclick={() => navigate('/page/:title', { params: { title: 'second' } })}>Page: second</button>
 </div>
 
 <!-- Router outlet -->

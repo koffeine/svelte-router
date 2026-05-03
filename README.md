@@ -15,6 +15,10 @@ Router for Svelte 5
 npm install @koffeine/svelte-router
 ```
 
+## API
+
+[Go to declaration](https://github.com/koffeine/svelte-router/blob/main/index.d.ts)
+
 ## Usage
 
 [`App.svelte`](https://github.com/koffeine/svelte-router/blob/main/demo/App.svelte):
@@ -25,77 +29,75 @@ import { init, link, navigate, route } from '@koffeine/svelte-router';
 
 /** @type {import('@koffeine/svelte-router').Route[]} */
 const routes = [
-    // Route with component
-    { path: '/welcome/:name', component: () => import('./Welcome.svelte') },
+	// Parameterized route with component
+	{ path: '/page/:title', component: () => import('./Page.svelte') },
 
-    // Route with redirect
-    { path: '*', redirect: '/welcome/unknown' }
+	// Fallback route with redirect
+	{ path: '*', redirect: '/page/unknown' }
 ];
 
 // Initialize router
 init(
-    routes,
-    {
-        // Base url, defaults to ''
-        baseUrl: import.meta.env.BASE_URL
-    }
+	routes,
+	{
+		// BaseUrl of the app, defaults to ''
+		baseUrl: import.meta.env.BASE_URL
+	}
 );
 </script>
 
-<!-- API navigation & using route.path -->
-<div>
-    <!-- Without params -->
-    <button type="button" disabled={route.path === '/welcome/john'} onclick={() => navigate('/welcome/john')}>Welcome John</button>
+<h1>svelte-router</h1>
 
-    <!-- With params -->
-    <button type="button" disabled={route.path === '/welcome/jane'} onclick={() => navigate('/welcome/:name', { params: { name: 'jane' } })}>Welcome Jane</button>
+<!-- Link navigation -->
+<div>
+	<!-- Without params -->
+	<a href="/page/first" {@attach link()} class:active={route.path === '/page/first'}>Page: first</a>
+
+	<!-- With params -->
+	<a href="/page/:title" {@attach link({ params: { title: 'second' } })} class:active={route.path === '/page/second'}>Page: second</a>
 </div>
 
-<!-- Anchor navigation & using route.path -->
+<!-- API navigation -->
 <div>
-    <!-- Without params -->
-    <a href="/welcome/john" {@attach link()} class:active={route.path === '/welcome/john'}>Welcome John</a>
-    |
-    <!-- With params -->
-    <a href="/welcome/:name" {@attach link({ params: { name: 'jane' } })} class:active={route.path === '/welcome/jane'}>Welcome Jane</a>
+	<!-- Without params -->
+	<button type="button" disabled={route.path === '/page/first'} onclick={() => navigate('/page/first')}>Page: first</button>
+
+	<!-- With params -->
+	<button type="button" disabled={route.path === '/page/second'} onclick={() => navigate('/page/:title', { params: { title: 'second' } })}>Page: second</button>
 </div>
 
 <!-- Router outlet -->
 <route.component {...route.params} />
 ```
 
-[`Welcome.svelte`](https://github.com/koffeine/svelte-router/blob/main/demo/Welcome.svelte):
+[`Page.svelte`](https://github.com/koffeine/svelte-router/blob/main/demo/Page.svelte):
 
 ```html
 <script>
 import { link, navigate, route } from '@koffeine/svelte-router';
 
-// Param
-/** @type {{ name: string }} */
-const { name } = $props();
+// Params
+/** @type {{ title: string }} */
+const { title } = $props();
 
-// Query param
+// Query params
 const numbers = $derived([ 1, 2, 3 ].sort((a, b) => (a - b) * (route.query.order === 'desc' ? -1 : 1)));
 const query = $derived({ order: route.query.order === 'desc' ? 'asc' : 'desc' });
 </script>
 
-<h1>Welcome, {name[0].toUpperCase() + name.slice(1)}!</h1>
+<h2>Page: {title}</h2>
 
 Numbers:
 
 <ul>
-    {#each numbers as number (number)}
-        <li>{number}</li>
-    {/each}
+	{#each numbers as number (number)}
+		<li>{number}</li>
+	{/each}
 </ul>
 
-<!-- API navigation using current path, changing only query params -->
-<button type="button" onclick={() => navigate(route.path, { query })}>Reverse</button>
+<!-- Link navigation -->
+<a href={route.path} {@attach link({ query })}>Reverse numbers (add a new history entry)</a>
 
-<!-- Anchor navigation using current path, changing only query params -->
-<a href={route.path} {@attach link({ query })}>Reverse</a>
+<!-- API navigation -->
+<button type="button" onclick={() => navigate(route.path, { query, replace: true })}>Reverse numbers (replace the current history entry)</button>
 ```
-
-## API
-
-[Go to declaration](https://github.com/koffeine/svelte-router/blob/main/index.d.ts)

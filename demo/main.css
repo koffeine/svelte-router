@@ -16,7 +16,9 @@ body {
 	gap: 1em;
 }
 
-h1 {
+h1,
+h2,
+ul {
 	margin: 0;
 }
 

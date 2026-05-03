@@ -1,29 +1,41 @@
 import { Component } from 'svelte';
 import { Attachment } from 'svelte/attachments';
 
+/** Route */
 export type Route = {
 
-	/** Anything [regexparam](https://www.npmjs.com/package/regexparam) supports */
-	path: string,
+	/**
+	 * Path
+	 *
+	 * Shouldn't include base url, should start with `/`, supports [regexparam](https://www.npmjs.com/package/regexparam) patterns
+	 */
+	path: string
 
-	/** Path to redirect to */
-	redirect: string,
+} & (
 
-	/** Shouldn't be set when `redirect` is set */
-	component?: never
+	{
 
-} | {
+		/** Dynamic import to a component */
+		component: () => Promise<{ default: Component<any> }>,
 
-	/** Anything [regexparam](https://www.npmjs.com/package/regexparam) supports */
-	path: string,
+		/** Shouldn't be set when `component` is set */
+		redirect?: never
 
-	/** Dynamic import to a component */
-	component: () => Promise<{ default: Component<any> }>,
+	} | {
 
-	/** Shouldn't be set when `component` is set */
-	redirect?: never
+		/**
+		 * Url to redirect to
+		 *
+		 * Shouldn't include base url, should start with `/`
+		 */
+		redirect: string,
 
-};
+		/** Shouldn't be set when `redirect` is set */
+		component?: never
+
+	}
+
+);
 
 /** Initialize router */
 export const init: (
@@ -35,8 +47,9 @@ export const init: (
 	options?: {
 
 		/**
-		 * Base url
-		 * @default ''
+		 * Base url of the app
+		 *
+		 * Defaults to `''`
 		 */
 		baseUrl?: string
 
@@ -46,15 +59,16 @@ export const init: (
 
 export type NavigateOptions = {
 
-	/** Params to inject into url */
-	params?: { [key: string]: string },
+	/** Params */
+	params?: { [ key: string ]: string },
 
-	/** Query params to add after path */
-	query?: { [key: string]: string },
+	/** Query params */
+	query?: { [ key: string ]: string },
 
 	/**
-	 * If `true`, `History.replaceState()` will be used, otherwise `History.pushState()`
-	 * @default false
+	 * Whether to replace the current history entry or add a new one
+	 *
+	 * Defaults to `false`
 	 */
 	replace?: boolean
 
@@ -64,34 +78,72 @@ export type NavigateOptions = {
 export const link: (
 
 	/** Options */
-	options?: NavigateOptions
+	options?: {
+
+		/** Params */
+		params?: { [ key: string ]: string },
+
+		/** Query params */
+		query?: { [ key: string ]: string },
+
+		/**
+		 * Whether to replace the current history entry or add a new one
+		 *
+		 * Defaults to `false`
+		 */
+		replace?: boolean
+
+	}
 
 ) => Attachment<HTMLAnchorElement>;
 
-/** Navigate to a path */
+/** Navigate programmatically */
 export const navigate: (
 
-	/** Path to navigate to */
+	/**
+	 * Path
+	 *
+	 * Shouldn't include base url, should start with `/`
+	 */
 	path: string,
 
 	/** Options */
-	options?: NavigateOptions
+	options?: {
+
+		/** Params */
+		params?: { [ key: string ]: string },
+
+		/** Query params */
+		query?: { [ key: string ]: string },
+
+		/**
+		 * Whether to replace the current history entry or add a new one
+		 *
+		 * Defaults to `false`
+		 */
+		replace?: boolean
+
+	}
 
 ) => Promise<void>;
 
-/** State describing current route */
+/** Reactive state of the current route */
 export const route: {
 
-	/** Path of current url */
-	readonly path: string,
-
-	/** Component corresponding to current url */
+	/** Component */
 	readonly component: Component | null,
 
-	/** Params of current url */
-	readonly params: { [key: string]: string | undefined },
+	/**
+	 * Path
+	 *
+	 * Doesn't include base url
+	 */
+	readonly path: string,
 
-	/** Query params of current url */
-	readonly query: { [key: string]: string | undefined }
+	/** Params */
+	readonly params: { [ key: string ]: string | undefined },
+
+	/** Query params */
+	readonly query: { [ key: string ]: string | undefined }
 
 };
