@@ -57,23 +57,6 @@ export const init: (
 
 ) => Promise<void>;
 
-export type NavigateOptions = {
-
-	/** Params */
-	params?: { [ key: string ]: string },
-
-	/** Query params */
-	query?: { [ key: string ]: string },
-
-	/**
-	 * Whether to replace the current history entry or add a new one
-	 *
-	 * Defaults to `false`
-	 */
-	replace?: boolean
-
-};
-
 /** Attachment factory that can be used on `a` elements to change them from regular links to router links */
 export const link: (
 
