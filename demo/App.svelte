@@ -1,18 +1,18 @@
 <script>
 import { init, link, navigate, route } from '@koffeine/svelte-router';
 
-/** @type {import('@koffeine/svelte-router').Route[]} */
-const routes = [
-	// Parameterized route with component
-	{ path: '/page/:title', component: () => import('./Page.svelte') },
+/** @type {import('@koffeine/svelte-router').RouteConfig[]} */
+const routeConfigs = [
+	// Parameterized route config with component
+	{ pathname: '/page/:title', component: () => import('./Page.svelte') },
 
-	// Fallback route with redirect
-	{ path: '*', redirect: '/page/unknown' }
+	// Fallback route config with redirect
+	{ pathname: '/*', redirect: '/page/unknown' }
 ];
 
 // Initialize router
 init(
-	routes,
+	routeConfigs,
 	{
 		// BaseUrl of the app, defaults to ''
 		baseUrl: import.meta.env.BASE_URL
@@ -24,20 +24,14 @@ init(
 
 <!-- Link navigation -->
 <div>
-	<!-- Without params -->
-	<a href="/page/first" {@attach link()} class:active={route.path === '/page/first'}>Page: first</a>
-
-	<!-- With params -->
-	<a href="/page/:title" {@attach link({ params: { title: 'second' } })} class:active={route.path === '/page/second'}>Page: second</a>
+	<a href={link('/page/first')} class:active={route.pathname === '/page/first'}>Page: first</a>
+	<a href={link('/page/second')} class:active={route.pathname === '/page/second'}>Page: second</a>
 </div>
 
 <!-- API navigation -->
 <div>
-	<!-- Without params -->
-	<button type="button" disabled={route.path === '/page/first'} onclick={() => navigate('/page/first')}>Page: first</button>
-
-	<!-- With params -->
-	<button type="button" disabled={route.path === '/page/second'} onclick={() => navigate('/page/:title', { params: { title: 'second' } })}>Page: second</button>
+	<button type="button" disabled={route.pathname === '/page/first'} onclick={() => navigate('/page/first')}>Page: first</button>
+	<button type="button" disabled={route.pathname === '/page/second'} onclick={() => navigate('/page/second')}>Page: second</button>
 </div>
 
 <!-- Router outlet -->

@@ -1,15 +1,14 @@
 import { Component } from 'svelte';
-import { Attachment } from 'svelte/attachments';
 
-/** Route */
-export type Route = {
+/** Route config */
+export type RouteConfig = {
 
 	/**
-	 * Path
+	 * Pathname
 	 *
 	 * Shouldn't include base url, should start with `/`, supports [regexparam](https://www.npmjs.com/package/regexparam) patterns
 	 */
-	path: string
+	pathname: string
 
 } & (
 
@@ -40,8 +39,8 @@ export type Route = {
 /** Initialize router */
 export const init: (
 
-	/** Array of routes */
-	routes: Route[],
+	/** Array of route configs */
+	routeConfigs: RouteConfig[],
 
 	/** Options */
 	options?: {
@@ -57,47 +56,41 @@ export const init: (
 
 ) => Promise<void>;
 
-/** Attachment factory that can be used on `a` elements to change them from regular links to router links */
+/** Prefix pathname with base url and add search params */
 export const link: (
+
+	/**
+	 * Pathname
+	 *
+	 * Shouldn't include base url, should start with `/`
+	 */
+	pathname: string,
 
 	/** Options */
 	options?: {
 
-		/** Params */
-		params?: { [ key: string ]: string },
-
-		/** Query params */
-		query?: { [ key: string ]: string },
-
-		/**
-		 * Whether to replace the current history entry or add a new one
-		 *
-		 * Defaults to `false`
-		 */
-		replace?: boolean
+		/** Search params */
+		searchParams?: { [ key: string ]: string }
 
 	}
 
-) => Attachment<HTMLAnchorElement>;
+) => string;
 
 /** Navigate programmatically */
 export const navigate: (
 
 	/**
-	 * Path
+	 * Pathname
 	 *
 	 * Shouldn't include base url, should start with `/`
 	 */
-	path: string,
+	pathname: string,
 
 	/** Options */
 	options?: {
 
-		/** Params */
-		params?: { [ key: string ]: string },
-
-		/** Query params */
-		query?: { [ key: string ]: string },
+		/** Search params */
+		searchParams?: { [ key: string ]: string },
 
 		/**
 		 * Whether to replace the current history entry or add a new one
@@ -114,19 +107,19 @@ export const navigate: (
 export const route: {
 
 	/** Component */
-	readonly component: Component | null,
+	readonly component: Component<any> | null,
 
 	/**
-	 * Path
+	 * Pathname
 	 *
 	 * Doesn't include base url
 	 */
-	readonly path: string,
+	readonly pathname: string,
 
 	/** Params */
 	readonly params: { [ key: string ]: string | undefined },
 
-	/** Query params */
-	readonly query: { [ key: string ]: string | undefined }
+	/** Search params */
+	readonly searchParams: { [ key: string ]: string | undefined }
 
 };

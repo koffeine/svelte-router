@@ -1,26 +1,28 @@
-/** @typedef {{ path: string, component: import('svelte').Component | null, params: { [key: string]: string | undefined }, query: { [key: string]: string | undefined } }} State */
+/** @typedef {{ component: import('svelte').Component<any> | null, pathname: string, params: { [ key: string ]: string | undefined }, searchParams: { [ key: string ]: string | undefined } }} Route */
 
-/** @type {State} */
-let state = $state({ path: '', component: null, params: {}, query: {} });
+/** @type {Route} */
+let routeState = $state({ component: null, pathname: '', params: {}, searchParams: {} });
 
-/** @type {Readonly<State>} */
+/** @type {Readonly<Route>} */
 export const route = {
-	get path() {
-		return state.path;
+	get component() {
+		return routeState.component;
 	},
 
-	get component() {
-		return state.component;
+	get pathname() {
+		return routeState.pathname;
 	},
 
 	get params() {
-		return state.params;
+		return routeState.params;
 	},
 
-	get query() {
-		return state.query;
+	get searchParams() {
+		return routeState.searchParams;
 	}
 };
 
-/** @param {State} newRoute */
-export const setRoute = (newRoute) => state = newRoute;
+/** @param {Route} newRoute */
+export const setRoute = (newRoute) => {
+	routeState = newRoute;
+};

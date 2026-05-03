@@ -8,5 +8,5 @@ import { route } from '../src/index.js';
 // @ts-expect-error: Mock component
 export const mock = (name) => () => ({ default: name });
 
-/** @param {{ path: string, component: string, params?: { [key: string]: string | undefined }, query?: { [key: string]: string | undefined } }} expected */
-export const check = (expected) => expect(route).toStrictEqual({ params: {}, query: {}, ...expected });
+/** @param {{ component: string, pathname: string, params?: { [ key: string ]: string | undefined }, searchParams?: { [ key: string ]: string | undefined } }} expected */
+export const check = (expected) => expect(route).toStrictEqual({ params: {}, searchParams: {}, ...expected });

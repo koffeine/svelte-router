@@ -8,9 +8,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Renamed `path` to `pathname` everywhere
+- Renamed `query` to `searchParams` everywhere
+- Renamed `Route` type to `RouteConfig`
+- Rewrote `link` from an Attachment to a URL builder function to be used in `href`. Links are now auto-intercepted
+
 ### Removed
 
 - Removed `NavigateOptions` type
+- Removed `params` option from `navigate`
 
 
 ## [6.0.10] - 2026-04-29
