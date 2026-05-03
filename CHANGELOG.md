@@ -13,11 +13,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Reworked URL encoding and decoding to fix `route.params` not being fully URL-decoded
     - `baseUrl` in `init`, `pathname` and `redirect` in `RouteConfig`, and `pathname` in `link` and `navigate` must now be URL-encoded
     - `route.pathname` is no longer URL-decoded
+- Replaced regexparam with URL Pattern API
+    - Pattern syntax now follows the URL Pattern API
+    - Matching is now case-sensitive and no longer ignores a trailing slash
+    - Wildcard params are now keyed by their index (`0`, `1`, ...) instead of `*`
 
 ### Fixed
 
 - Fixed navigation happening when left-clicking on a link while Alt is pressed
 - Fixed `route.params` not being fully URL-decoded
+- Fixed `route.params` only containing the last wildcard value
 
 
 ## [7.0.1] - 2026-05-11

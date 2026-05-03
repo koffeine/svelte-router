@@ -137,12 +137,12 @@ test('should handle navigation with optional params not set', async () => {
 test('should handle navigation with wildcard params', async () => {
 	await setup([
 		{ pathname: '/', component: mock('Index') },
-		{ pathname: '/wildcard/*', component: mock('WildcardParams') }
+		{ pathname: '/*/wildcard/*', component: mock('WildcardParams') }
 	]);
 
-	await navigate('/wildcard/any/thing');
+	await navigate('/any/thing/wildcard/other/thing');
 
-	check({ component: 'WildcardParams', pathname: '/wildcard/any/thing', params: { '*': 'any/thing' } });
+	check({ component: 'WildcardParams', pathname: '/any/thing/wildcard/other/thing', params: { 0: 'any/thing', 1: 'other/thing' } });
 });
 
 test('should handle navigation with search params', async () => {
