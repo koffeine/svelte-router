@@ -142,7 +142,7 @@ test('should handle navigation with wildcard params', async () => {
 
 	await navigate('/wildcard/any/thing');
 
-	check({ component: 'WildcardParams', pathname: '/wildcard/any/thing', params: { '*': 'any/thing' } });
+	check({ component: 'WildcardParams', pathname: '/wildcard/any/thing', params: { 0: 'any/thing' } });
 });
 
 test('should handle navigation with search params', async () => {

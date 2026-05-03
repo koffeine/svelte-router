@@ -33,9 +33,6 @@
 		"preview": "vite preview",
 		"prepublishOnly": "npm test"
 	},
-	"dependencies": {
-		"regexparam": "3.0.0"
-	},
 	"devDependencies": {
 		"@koffeine/eslint-config": "^49.8.0",
 		"@koffeine/eslint-config-svelte": "^7.1.0",

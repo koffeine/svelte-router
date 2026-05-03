@@ -1,11 +1,10 @@
-import { parse } from 'regexparam';
 import { route, setRoute } from './route.svelte.js';
 
 export { route };
 
 /** @typedef {{ pathname: string } & ({ component: () => Promise<{ default: import('svelte').Component<any, {}> }>, redirect?: never } | { redirect: string, component?: never })} PublicRouteConfig */
 
-/** @typedef {{ pattern: RegExp, keys: string[] } & PublicRouteConfig} RouteConfig */
+/** @typedef {{ pattern: URLPattern } & PublicRouteConfig} RouteConfig */
 
 /** @type {RouteConfig[]} */
 let routeConfigs;
@@ -19,7 +18,7 @@ let baseUrl;
  * @returns {Promise<void>}
  */
 export const init = async (publicRouteConfigs, { baseUrl: newBaseUrl = '' } = {}) => {
-	routeConfigs = publicRouteConfigs.map((publicRouteConfig) => ({ ...publicRouteConfig, ...parse(publicRouteConfig.pathname) }));
+	routeConfigs = publicRouteConfigs.map((publicRouteConfig) => ({ ...publicRouteConfig, pattern: new URLPattern({ pathname: publicRouteConfig.pathname }) }));
 	baseUrl = newBaseUrl.replace(/\/$/v, '');
 
 	window.addEventListener('popstate', notify); // eslint-disable-line no-use-before-define
@@ -68,19 +67,20 @@ const notify = async () => {
 	pathname = pathname.slice(baseUrl.length) || '/';
 
 
-	const routeConfig = routeConfigs.find((r) => r.pattern.test(pathname));
+	const routeConfig = routeConfigs.find((r) => r.pattern.test({ pathname }));
 
 	if (!routeConfig) {
 		throw new Error(`No route found for pathname '${pathname}'`);
 	}
 
 	if (routeConfig.component) {
-		const matches = /** @type {string[]} */ (routeConfig.pattern.exec(pathname)).slice(1);
-
 		setRoute({
 			component: (await routeConfig.component()).default,
 			pathname,
-			params: Object.fromEntries(routeConfig.keys.map((key, i) => [ key, matches[i] && decodeURIComponent(matches[i]) ])),
+			params: Object.fromEntries(
+				Object.entries(/** @type {URLPatternResult} */ (routeConfig.pattern.exec({ pathname })).pathname.groups)
+					.map(([ key, value ]) => [ key, value && decodeURIComponent(value) ])
+			),
 			searchParams: Object.fromEntries(new URLSearchParams(location.search))
 		});
 	} else {

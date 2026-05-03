@@ -6,7 +6,7 @@ export type RouteConfig = {
 	/**
 	 * Pathname
 	 *
-	 * Shouldn't include base url, should start with `/`, supports [regexparam](https://www.npmjs.com/package/regexparam) patterns
+	 * Shouldn't include base url, should start with `/`, supports [URL Pattern API](https://developer.mozilla.org/en-US/docs/Web/API/URL_Pattern_API) patterns
 	 */
 	pathname: string
 
