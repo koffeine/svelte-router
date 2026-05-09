@@ -62,7 +62,7 @@ const notify = async () => {
 	let pathname = location.pathname;
 
 	if (pathname !== baseUrl && !pathname.startsWith(`${baseUrl}/`)) {
-		throw new Error(`Pathname '${pathname}' is outside of baseUrl '${baseUrl}'`);
+		throw new Error(`Pathname '${pathname}' is outside of base url '${baseUrl}'`);
 	}
 
 	pathname = pathname.slice(baseUrl.length) || '/';
