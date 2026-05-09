@@ -52,14 +52,16 @@ export const navigate = (pathname, { searchParams, replace = false } = {}) =>
  * @param {boolean} replace
  */
 const doNavigate = async (url, replace) => {
-	if (url !== location.pathname + (location.pathname === baseUrl ? '/' : '') + location.search) {
+	const pathname = decodeURI(location.pathname);
+
+	if (url !== pathname + (pathname === baseUrl ? '/' : '') + location.search) {
 		history[replace ? 'replaceState' : 'pushState'](null, '', url);
 		await notify(); // eslint-disable-line no-use-before-define
 	}
 };
 
 const notify = async () => {
-	let pathname = location.pathname;
+	let pathname = decodeURI(location.pathname);
 
 	if (pathname !== baseUrl && !pathname.startsWith(`${baseUrl}/`)) {
 		throw new Error(`Pathname '${pathname}' is outside of base url '${baseUrl}'`);
@@ -96,10 +98,15 @@ const onClick = async (event) => {
 
 	const anchor = /** @type {Element | null} */ (event.target)?.closest('a');
 
+	if (!anchor) {
+		return;
+	}
+
+	const pathname = decodeURI(anchor.pathname);
+
 	if (
-		!anchor
-		|| anchor.origin !== location.origin
-		|| (anchor.pathname !== baseUrl && !anchor.pathname.startsWith(`${baseUrl}/`))
+		anchor.origin !== location.origin
+		|| (pathname !== baseUrl && !pathname.startsWith(`${baseUrl}/`))
 		|| (anchor.target && anchor.target !== '_self')
 		|| anchor.hasAttribute('download')
 	) {
@@ -108,5 +115,5 @@ const onClick = async (event) => {
 
 	event.preventDefault();
 
-	await doNavigate(anchor.pathname + anchor.search, false);
+	await doNavigate(pathname + anchor.search, false);
 };

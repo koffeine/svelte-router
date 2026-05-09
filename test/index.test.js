@@ -69,6 +69,21 @@ test('should ignore navigation to the same url', async () => {
 	expect(history.length).toBe(length);
 });
 
+test('should ignore navigation to the same url with URL-encoded characters', async () => {
+	await setup([
+		{ pathname: '/', component: mock('Index') },
+		{ pathname: '/spe ial/:value', component: mock('SpecialCharacters') }
+	], '/svelte router');
+
+	await navigate('/spe ial/va ue', { searchParams: { searchParam: 'search value' } });
+
+	const length = history.length;
+
+	await navigate('/spe ial/va ue', { searchParams: { searchParam: 'search value' } });
+
+	expect(history.length).toBe(length);
+});
+
 test('should throw error when pathname is outside of base url', async () => {
 	history.replaceState(null, '', '/'); // Playwright fix
 
@@ -139,6 +154,17 @@ test('should handle navigation with search params', async () => {
 	await navigate('/search-params', { searchParams: { param: 'value' } });
 
 	check({ component: 'SearchParams', pathname: '/search-params', searchParams: { param: 'value' } });
+});
+
+test('should handle navigation with URL-encoded characters', async () => {
+	await setup([
+		{ pathname: '/', component: mock('Index') },
+		{ pathname: '/spe ial/:value', component: mock('SpecialCharacters') }
+	], '/svelte router');
+
+	await navigate('/spe ial/va ue', { searchParams: { searchParam: 'search value' } });
+
+	check({ component: 'SpecialCharacters', pathname: '/spe ial/va ue', params: { value: 'va ue' }, searchParams: { searchParam: 'search value' } });
 });
 
 test('should handle navigation with redirect', async () => {

@@ -10,3 +10,4 @@ import { link } from '../src/index.js';
 <a href={link('/page')} download>Download attribute</a>
 <a href={link('/page')}><span>Valid nested link</span></a>
 <a href={link('/page')}>Valid link</a>
+<a href={link('/spe ial/va ue', { searchParams: { searchParam: 'search value' } })}>URL-encoded characters</a>

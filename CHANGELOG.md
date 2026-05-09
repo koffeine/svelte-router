@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed handling of URL-encoded characters in base url and pathname
+
 
 ## [7.0.0] - 2026-05-03
 

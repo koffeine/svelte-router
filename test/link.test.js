@@ -94,7 +94,7 @@ test('should not navigate when link has a different base url', async () => {
 	navigation.addEventListener(
 		'navigate',
 		(event) => {
-			const pathname = new URL(event.destination.url).pathname;
+			const pathname = decodeURI(new URL(event.destination.url).pathname);
 
 			if (pathname !== baseUrl && !pathname.startsWith(`${baseUrl}/`)) {
 				event.preventDefault();
@@ -144,4 +144,15 @@ test('should navigate for a valid link', async () => {
 	await page.getByRole('link', { name: 'Valid link' }).click();
 
 	check({ component: 'Page', pathname: '/page' });
+});
+
+test('should handle URL-encoded characters', async () => {
+	await setup([
+		{ pathname: '/', component: mock('Index') },
+		{ pathname: '/spe ial/:value', component: mock('SpecialCharacters') }
+	], '/svelte router');
+
+	await page.getByRole('link', { name: 'URL-encoded characters' }).click();
+
+	check({ component: 'SpecialCharacters', pathname: '/spe ial/va ue', params: { value: 'va ue' }, searchParams: { searchParam: 'search value' } });
 });
