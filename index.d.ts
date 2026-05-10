@@ -15,7 +15,7 @@ export type RouteConfig = {
 	{
 
 		/** Dynamic import to a component */
-		component: () => Promise<{ default: Component<any> }>,
+		component: () => Promise<{ default: Component<any, {}> }>,
 
 		/** Shouldn't be set when `component` is set */
 		redirect?: never
@@ -107,7 +107,7 @@ export const navigate: (
 export const route: {
 
 	/** Component */
-	readonly component: Component<any> | null,
+	readonly component: Component<any, {}> | null,
 
 	/**
 	 * Pathname

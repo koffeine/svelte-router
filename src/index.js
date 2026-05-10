@@ -3,7 +3,7 @@ import { route, setRoute } from './route.svelte.js';
 
 export { route };
 
-/** @typedef {{ pathname: string } & ({ component: () => Promise<{ default: import('svelte').Component<any> }>, redirect?: never } | { redirect: string, component?: never })} PublicRouteConfig */
+/** @typedef {{ pathname: string } & ({ component: () => Promise<{ default: import('svelte').Component<any, {}> }>, redirect?: never } | { redirect: string, component?: never })} PublicRouteConfig */
 
 /** @typedef {{ pattern: RegExp, keys: string[] } & PublicRouteConfig} RouteConfig */
 

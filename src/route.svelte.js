@@ -1,4 +1,4 @@
-/** @typedef {{ component: import('svelte').Component<any> | null, pathname: string, params: { [ key: string ]: string | undefined }, searchParams: { [ key: string ]: string | undefined } }} Route */
+/** @typedef {{ component: import('svelte').Component<any, {}> | null, pathname: string, params: { [ key: string ]: string | undefined }, searchParams: { [ key: string ]: string | undefined } }} Route */
 
 /** @type {Route} */
 let routeState = $state({ component: null, pathname: '', params: {}, searchParams: {} });
