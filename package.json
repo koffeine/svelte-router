@@ -37,31 +37,30 @@
 		"regexparam": "3.0.0"
 	},
 	"devDependencies": {
-		"@koffeine/eslint-config": "^48.8.0",
-		"@koffeine/eslint-config-svelte": "^2.5.0",
+		"@koffeine/eslint-config": "^49.6.0",
+		"@koffeine/eslint-config-svelte": "^7.1.0",
 		"@koffeine/kss": "^4.4.2",
 		"@sveltejs/vite-plugin-svelte": "^6.2.4",
-		"@typescript-eslint/eslint-plugin": "^8.59.2",
-		"@typescript-eslint/parser": "^8.59.2",
-		"@vitest/browser-playwright": "^4.1.5",
-		"@vitest/coverage-v8": "^4.1.5",
-		"eslint": "^10.3.0",
-		"globals": "^17.6.0",
-		"playwright": "^1.59.1",
-		"svelte": "^5.55.5",
-		"svelte-check": "^4.4.8",
+		"@typescript-eslint/eslint-plugin": "^8.69.0",
+		"@typescript-eslint/parser": "^8.69.0",
+		"@vitest/browser-playwright": "^5.0.0",
+		"@vitest/coverage-v8": "^5.0.0",
+		"eslint": "^10.10.0",
+		"globals": "^17.12.0",
+		"playwright": "^1.63.0",
+		"svelte": "^5.57.0",
+		"svelte-check": "^4.7.6",
 		"typescript-svelte-plugin": "^0.3.52",
-		"vite": "^7.3.3",
-		"vitest": "^4.1.5",
-		"vitest-browser-svelte": "^2.1.1"
+		"vite": "^7.3.6",
+		"vitest": "^5.0.0",
+		"vitest-browser-svelte": "^3.1.0"
 	},
 	"peerDependencies": {
 		"svelte": "^5.29.0"
 	},
-	"overrides": {
-		"svelte2tsx": {
-			"typescript": "^6.0.3"
-		}
+	"allowScripts": {
+		"esbuild": true,
+		"fsevents": true
 	},
 	"devEngines": {
 		"runtime": {
