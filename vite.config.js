@@ -5,7 +5,10 @@ import { playwright } from '@vitest/browser-playwright';
 export default ({ mode }) => ({
 	base: mode === 'production' ? '/svelte-router/' : '/',
 
-	plugins: [ svelte() ],
+	plugins: [ svelte({
+		compilerOptions: { runes: true },
+		configFile: false
+	}) ],
 
 	server: { open: true },
 
