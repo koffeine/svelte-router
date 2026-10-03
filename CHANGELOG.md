@@ -8,9 +8,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Reworked URL encoding and decoding to fix `route.params` not being fully URL-decoded
+    - `baseUrl` in `init`, `pathname` and `redirect` in `RouteConfig`, and `pathname` in `link` and `navigate` must now be URL-encoded
+    - `route.pathname` is no longer URL-decoded
+
 ### Fixed
 
 - Fixed navigation happening when left-clicking on a link while Alt is pressed
+- Fixed `route.params` not being fully URL-decoded
 
 
 ## [7.0.1] - 2026-05-11

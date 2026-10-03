@@ -72,14 +72,14 @@ test('should ignore navigation to the same url', async () => {
 test('should ignore navigation to the same url with URL-encoded characters', async () => {
 	await setup([
 		{ pathname: '/', component: mock('Index') },
-		{ pathname: '/spe ial/:value', component: mock('SpecialCharacters') }
-	], '/svelte router');
+		{ pathname: `/${encodeURIComponent('spe ial')}/:value`, component: mock('SpecialCharacters') }
+	], `/${encodeURIComponent('svelte router')}`);
 
-	await navigate('/spe ial/va ue', { searchParams: { searchParam: 'search value' } });
+	await navigate(`/${encodeURIComponent('spe ial')}/${encodeURIComponent('v l/e')}`, { searchParams: { searchParam: 'search value' } });
 
 	const length = history.length;
 
-	await navigate('/spe ial/va ue', { searchParams: { searchParam: 'search value' } });
+	await navigate(`/${encodeURIComponent('spe ial')}/${encodeURIComponent('v l/e')}`, { searchParams: { searchParam: 'search value' } });
 
 	expect(history.length).toBe(length);
 });
@@ -159,12 +159,12 @@ test('should handle navigation with search params', async () => {
 test('should handle navigation with URL-encoded characters', async () => {
 	await setup([
 		{ pathname: '/', component: mock('Index') },
-		{ pathname: '/spe ial/:value', component: mock('SpecialCharacters') }
-	], '/svelte router');
+		{ pathname: `/${encodeURIComponent('spe ial')}/:value`, component: mock('SpecialCharacters') }
+	], `/${encodeURIComponent('svelte router')}`);
 
-	await navigate('/spe ial/va ue', { searchParams: { searchParam: 'search value' } });
+	await navigate(`/${encodeURIComponent('spe ial')}/${encodeURIComponent('v l/e')}`, { searchParams: { searchParam: 'search value' } });
 
-	check({ component: 'SpecialCharacters', pathname: '/spe ial/va ue', params: { value: 'va ue' }, searchParams: { searchParam: 'search value' } });
+	check({ component: 'SpecialCharacters', pathname: `/${encodeURIComponent('spe ial')}/${encodeURIComponent('v l/e')}`, params: { value: 'v l/e' }, searchParams: { searchParam: 'search value' } });
 });
 
 test('should handle navigation with redirect', async () => {

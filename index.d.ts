@@ -6,7 +6,7 @@ export type RouteConfig = {
 	/**
 	 * Pathname
 	 *
-	 * Shouldn't include base url, should start with `/`, supports [regexparam](https://www.npmjs.com/package/regexparam) patterns
+	 * Shouldn't include base url, should start with `/`, should be URL-encoded, supports [regexparam](https://www.npmjs.com/package/regexparam) patterns
 	 */
 	pathname: string
 
@@ -25,7 +25,7 @@ export type RouteConfig = {
 		/**
 		 * Url to redirect to
 		 *
-		 * Shouldn't include base url, should start with `/`
+		 * Shouldn't include base url, should start with `/`, should be URL-encoded
 		 */
 		redirect: string,
 
@@ -48,7 +48,7 @@ export const init: (
 		/**
 		 * Base url of the app
 		 *
-		 * Defaults to `''`
+		 * Defaults to `''`, should be URL-encoded
 		 */
 		baseUrl?: string
 
@@ -62,14 +62,18 @@ export const link: (
 	/**
 	 * Pathname
 	 *
-	 * Shouldn't include base url, should start with `/`
+	 * Shouldn't include base url, should start with `/`, should be URL-encoded
 	 */
 	pathname: string,
 
 	/** Options */
 	options?: {
 
-		/** Search params */
+		/**
+		 * Search params
+		 *
+		 * Shouldn't be URL-encoded
+		 */
 		searchParams?: { [ key: string ]: string }
 
 	}
@@ -82,14 +86,18 @@ export const navigate: (
 	/**
 	 * Pathname
 	 *
-	 * Shouldn't include base url, should start with `/`
+	 * Shouldn't include base url, should start with `/`, should be URL-encoded
 	 */
 	pathname: string,
 
 	/** Options */
 	options?: {
 
-		/** Search params */
+		/**
+		 * Search params
+		 *
+		 * Shouldn't be URL-encoded
+		 */
 		searchParams?: { [ key: string ]: string },
 
 		/**
@@ -112,14 +120,22 @@ export const route: {
 	/**
 	 * Pathname
 	 *
-	 * Doesn't include base url
+	 * Doesn't include base url, is URL-encoded
 	 */
 	readonly pathname: string,
 
-	/** Params */
+	/**
+	 * Params
+	 *
+	 * Is URL-decoded
+	 */
 	readonly params: { [ key: string ]: string | undefined },
 
-	/** Search params */
+	/**
+	 * Search params
+	 *
+	 * Is URL-decoded
+	 */
 	readonly searchParams: { [ key: string ]: string | undefined }
 
 };
