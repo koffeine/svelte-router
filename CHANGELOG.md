@@ -8,6 +8,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- `baseUrl` and `pathname` in `init`, `RouteConfig`, `link` and `navigate` must now be URL-encoded
+- `route.pathname` is no longer URL-decoded
+
+### Fixed
+
+- Fixed `route.params` not being fully URL-decoded
+
 
 ## [7.0.1] - 2026-05-11
 
