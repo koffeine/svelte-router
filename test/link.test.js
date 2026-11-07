@@ -23,6 +23,14 @@ test('should not navigate when default is prevented', async () => {
 	check({ component: 'Index', pathname: '/' });
 });
 
+test('should not navigate when alt is pressed', async () => {
+	await setup([ { pathname: '/', component: mock('Index') } ]);
+
+	await page.getByRole('link', { name: 'Valid link' }).click({ modifiers: [ 'Alt' ] });
+
+	check({ component: 'Index', pathname: '/' });
+});
+
 test('should not navigate when control is pressed', async () => {
 	await setup([ { pathname: '/', component: mock('Index') } ]);
 

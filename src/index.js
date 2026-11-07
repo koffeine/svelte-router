@@ -92,7 +92,7 @@ const notify = async () => {
 
 /** @param {PointerEvent} event */
 const onClick = async (event) => {
-	if (event.defaultPrevented || event.ctrlKey || event.metaKey || event.shiftKey || event.button !== 0) {
+	if (event.defaultPrevented || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey || event.button !== 0) {
 		return;
 	}
 
