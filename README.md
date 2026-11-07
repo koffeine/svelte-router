@@ -3,7 +3,7 @@
     <a href="https://www.npmjs.com/package/@koffeine/svelte-router"><img alt="npm" src="https://img.shields.io/npm/v/@koffeine/svelte-router"></a>
 </h1>
 
-Router for Svelte 5
+A minimal router for Svelte 5
 
 ## Demo
 
