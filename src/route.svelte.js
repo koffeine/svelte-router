@@ -1,7 +1,7 @@
 /** @typedef {{ component: import('svelte').Component<any, {}> | null, pathname: string, params: { [ key: string ]: string | undefined }, searchParams: { [ key: string ]: string | undefined } }} Route */
 
 /** @type {Route} */
-let routeState = $state({ component: null, pathname: '', params: {}, searchParams: {} });
+let routeState = $state.raw({ component: null, pathname: '', params: {}, searchParams: {} });
 
 /** @type {Readonly<Route>} */
 export const route = {
