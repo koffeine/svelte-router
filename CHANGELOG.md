@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+
+## [8.0.0] - 2026-11-07
+
 ### Changed
 
 - Reworked URL encoding and decoding to fix `route.params` not being fully URL-decoded
