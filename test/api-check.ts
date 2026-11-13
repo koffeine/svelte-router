@@ -7,7 +7,7 @@ type AllTrue<T extends Record<string, true>> = T;
 
 export type Checks = AllTrue<{
 	[K in keyof typeof Public | keyof typeof Actual]: Equals<
-		(typeof Public)[K & keyof typeof Public],
-		(typeof Actual)[K & keyof typeof Actual]
+		typeof Public[K & keyof typeof Public],
+		typeof Actual[K & keyof typeof Actual]
 	>
 }>;
